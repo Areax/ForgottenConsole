@@ -5,12 +5,12 @@ using namespace std;
 
 namespace Forgotten
 {
-	void State::enter()
+	void State::Enter()
 	{
 		cout << "ENTERED STATE";
 	}
 
-	void State::exit()
+	void State::Exit()
 	{
 		cout << "and we out bitches";
 	}

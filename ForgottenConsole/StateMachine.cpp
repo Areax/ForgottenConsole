@@ -6,8 +6,11 @@ using namespace std;
 
 namespace Forgotten
 {
-	void setCurrentState(shared_ptr<State> state)
+	//Sets the current state to newState.
+	void StateMachine::setCurrentState(shared_ptr<State> newState)
 	{
-		currentState = state;
+		currentState = newState;
 	}
+
+
 }
