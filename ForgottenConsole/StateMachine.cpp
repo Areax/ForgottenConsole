@@ -6,19 +6,46 @@ using namespace std;
 
 namespace Forgotten
 {
+	void StateMachine::AddState(shared_ptr<State> state)
+	{
+		mStates.insert(pair<string, shared_ptr<State>>(state->Name(), state));
+	}
+
+	void StateMachine::AddStates(vector<shared_ptr<State>> states)
+	{
+		for each(auto state in states)
+		{
+			StateMachine::AddState(state);
+		}
+	}
+
 	//Sets the current state to newState.
-	void StateMachine::setCurrentState(shared_ptr<State> newState)
+	void StateMachine::setCurrentState(shared_ptr<State> state)
 	{
-		currentState = newState;
+		currentState = state;
 	}
 
-	void StateMachine::SetEnter()
+	//Sets the current state to newState.
+	shared_ptr<State> StateMachine::getCurrentState()
 	{
-		currentState->Enter();
+		return currentState;
 	}
 
-	void StateMachine::SetExit()
+	shared_ptr<State> StateMachine::Update()
 	{
-		currentState->Exit();
+		if (currentState != NULL)
+		{
+			for each(Transition t in currentState.Transitions())
+			{
+				if (t.IsTriggered())
+				{
+					currentState->Exit();
+					currentState = t.Target();
+					currentState->Enter();
+				}
+			}
+		}
+
+		return shared_ptr<State>();
 	}
 }
