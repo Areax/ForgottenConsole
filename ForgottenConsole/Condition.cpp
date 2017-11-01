@@ -8,4 +8,10 @@ namespace Forgotten
 		mStatement = mCheck;
 	}
 
+	bool Condition::operator()(shared_ptr<State> state)
+	{
+		return ;
+	}
+
+
 }
