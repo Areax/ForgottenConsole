@@ -20,15 +20,20 @@ namespace Forgotten
 	}
 
 	//Sets the current state to newState.
+	shared_ptr<State> StateMachine::getCurrentState()
+	{
+		return currentState;
+	}
+
+	//Sets the current state to newState.
 	void StateMachine::setCurrentState(shared_ptr<State> state)
 	{
 		currentState = state;
 	}
 
-	//Sets the current state to newState.
-	shared_ptr<State> StateMachine::getCurrentState()
+	const map<string, shared_ptr<State>>& StateMachine::States()
 	{
-		return currentState;
+		return mStates;
 	}
 
 	shared_ptr<State> StateMachine::Update()

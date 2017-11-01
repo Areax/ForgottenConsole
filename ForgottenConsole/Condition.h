@@ -1,5 +1,5 @@
 #pragma once
-#include "stdafx.h"
+#include <functional>
 #include "BaseCondition.h"
 #include "State.h"
 

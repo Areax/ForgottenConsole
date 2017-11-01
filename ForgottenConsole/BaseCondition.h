@@ -4,6 +4,6 @@ namespace Forgotten
 {
 	class BaseCondition
 	{
-		virtual void operator()() = 0;
+		virtual bool operator()() = 0;
 	};
 }

@@ -6,12 +6,12 @@ using namespace std;
 
 namespace Forgotten
 {
+	typedef std::function<void(State&)> action;
 	class Action
 	{
-		string mName;
-		Action();
-		//~Action();
+		virtual void operator()(State & state);
 
-		void operator()();
+	private:
+		string mName;
 	};
 }
