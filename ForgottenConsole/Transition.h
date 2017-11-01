@@ -8,10 +8,10 @@ namespace Forgotten
 {
 	class Transition
 	{
-		shared_ptr<Condition> mCondition;
-		shared_ptr<State> mTarget;
+		//shared_ptr<Condition> mCondition;
+		//shared_ptr<State> mTarget;
 
-		bool isTriggered();
+		//bool isTriggered();
 
 	};
 }

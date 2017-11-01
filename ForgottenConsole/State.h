@@ -14,7 +14,7 @@ namespace Forgotten
 		
 		shared_ptr<Action> mEnter;
 		shared_ptr<Action> mExit;
-		vector<shared_ptr<Transition>> mTransitions;
+		//vector<shared_ptr<Transition>> mTransitions;
 		string mName;
 
 
@@ -22,4 +22,14 @@ namespace Forgotten
 		void Exit();
 
 	};
+
+	void State::Enter()
+	{
+		cout << "ENTERED STATE";
+	}
+
+	void State::Exit()
+	{
+		cout << "and we out bitches";
+	}
 }

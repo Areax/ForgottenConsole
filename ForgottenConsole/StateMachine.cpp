@@ -12,5 +12,13 @@ namespace Forgotten
 		currentState = newState;
 	}
 
+	void StateMachine::SetEnter()
+	{
+		currentState->Enter();
+	}
 
+	void StateMachine::SetExit()
+	{
+		currentState->Exit();
+	}
 }
