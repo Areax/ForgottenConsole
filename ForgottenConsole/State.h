@@ -1,14 +1,17 @@
 #pragma once
-#include "Action.h"
-#include "Transition.h"
 #include <string>
 #include <vector>
 #include <functional>
+#include <memory>
 
 using namespace std;
 
 namespace Forgotten
 {
+	class Transition;
+	class Action;
+
+
 	class State
 	{
 	public:
@@ -25,13 +28,10 @@ namespace Forgotten
 		virtual const vector<shared_ptr<Transition>>& Transitions();
 		virtual shared_ptr<State> Update();
 
-
-	private:
+	protected:
 		shared_ptr<Action> mEnter;
 		shared_ptr<Action> mExit;
 		string mName;
 		vector<shared_ptr<Transition>> mTransitions;
-
-
 	};
 }

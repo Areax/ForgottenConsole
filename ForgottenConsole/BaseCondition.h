@@ -1,9 +1,12 @@
 #pragma once
+#include "Condition.h"
 
 namespace Forgotten
 {
-	class BaseCondition
+	class BaseCondition : public Condition
 	{
-		virtual bool operator()() = 0;
+	public:
+		virtual bool operator()(shared_ptr<State> state);
+		virtual Condition& operator=(shared_ptr<State> state);
 	};
 }

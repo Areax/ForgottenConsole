@@ -7,7 +7,7 @@ namespace Forgotten
 {
 	void State::AddTransition(shared_ptr<Transition> t)
 	{
-		mTransitions.insert(t);
+		mTransitions.push_back(t);
 	}
 	void State::AddTransitions(vector<shared_ptr<Transition>> t)
 	{
@@ -38,11 +38,11 @@ namespace Forgotten
 	}
 	const string & State::Name()
 	{
-		// TODO: insert return statement here
+		return mName;
 	}
 	const vector<shared_ptr<Transition>>& State::Transitions()
 	{
-		// TODO: insert return statement here
+		return mTransitions;
 	}
 	shared_ptr<State> State::Update()
 	{

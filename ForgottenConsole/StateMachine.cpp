@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include <memory>
 #include "State.h"
 #include "StateMachine.h"
 
@@ -34,23 +34,5 @@ namespace Forgotten
 	const map<string, shared_ptr<State>>& StateMachine::States()
 	{
 		return mStates;
-	}
-
-	shared_ptr<State> StateMachine::Update()
-	{
-		if (currentState != NULL)
-		{
-			for each(Transition t in currentState.Transitions())
-			{
-				if (t.IsTriggered())
-				{
-					currentState->Exit();
-					currentState = t.Target();
-					currentState->Enter();
-				}
-			}
-		}
-
-		return shared_ptr<State>();
 	}
 }

@@ -36,6 +36,15 @@
     <ClInclude Include="Condition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BaseCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomsStateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -47,16 +56,25 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
+    <ClCompile Include="Condition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transition.cpp">
+    <ClCompile Include="State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Action.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Condition.cpp">
+    <ClCompile Include="Transition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomsStateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -25,9 +25,9 @@ namespace Forgotten
 		return mTarget;
 	}
 
-	bool Transition::isTriggered()
+	bool Transition::IsTriggered()
 	{
-		return mCondition->operator()(mTarget);
+		return true;//mCondition->operator()(mTarget);
 	}
 
 }
