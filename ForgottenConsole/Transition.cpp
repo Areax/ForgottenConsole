@@ -5,6 +5,11 @@ using namespace std;
 
 namespace Forgotten
 {
+	Transition::Transition(shared_ptr<State> target)
+	{
+		mTarget = target;
+	}
+
 	void Transition::SetCondition(shared_ptr<Condition> condition)
 	{
 		mCondition = condition;

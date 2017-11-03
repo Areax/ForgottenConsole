@@ -1,11 +1,18 @@
 #include <memory>
 #include "RoomState.h"
 #include "RoomsStateMachine.h"
+#include "Transition.h"
+#include "LeaveCondition.h"
 
 using namespace std;
 
 namespace Forgotten
 {
+	RoomsStateMachine::RoomsStateMachine()
+	{
+
+	}
+
 	void RoomsStateMachine::Initialize()
 	{
 		shared_ptr<State> bedroom = make_shared<RoomState>("bedroom");
@@ -17,26 +24,32 @@ namespace Forgotten
 		shared_ptr<State> frontroom = make_shared<RoomState>("frontroom");
 		shared_ptr<State> hallway = make_shared<RoomState>("hallway");
 		shared_ptr<State> computerroom = make_shared<RoomState>("computerroom");
-		/*
+
 		shared_ptr<Transition> bedroomToComputerroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> bedroomToBathroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> bedroomToLivingroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> computerroomToBedroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> bathroomToHallway = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> hallwayToBathroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> hallwayToGuestroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> hallwayToLivingroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> guestroomToHallmay = make_shared<Transition>(computerroom);
+		shared_ptr<Transition> bedroomToBathroom = make_shared<Transition>(bathroom);
+		shared_ptr<Transition> bedroomToLivingroom = make_shared<Transition>(livingroom);
+		shared_ptr<Transition> computerroomToBedroom = make_shared<Transition>(bedroom);
+		shared_ptr<Transition> bathroomToHallway = make_shared<Transition>(hallway);
+		shared_ptr<Transition> hallwayToBathroom = make_shared<Transition>(bathroom);
+		shared_ptr<Transition> hallwayToGuestroom = make_shared<Transition>(guestroom);
+		shared_ptr<Transition> hallwayToLivingroom = make_shared<Transition>(livingroom);
+		shared_ptr<Transition> guestroomToHallmay = make_shared<Transition>(hallway);
 		shared_ptr<Transition> livingroomToComputerroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> livingroomToKitchen = make_shared<Transition>(computerroom);
+		shared_ptr<Transition> livingroomToKitchen = make_shared<Transition>(kitchen);
 		shared_ptr<Transition> livingroomToBedroom = make_shared<Transition>(bedroom);
-		shared_ptr<Transition> livingroomToFrontroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> livingroomToHallway = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> frontroomToPlayroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> frontroomToLivingroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> playroomToKitchen = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> playroomToHallway = make_shared<Transition>(computerroom);
+		shared_ptr<Transition> livingroomToFrontroom = make_shared<Transition>(frontroom);
+		shared_ptr<Transition> livingroomToHallway = make_shared<Transition>(hallway);
+		shared_ptr<Transition> frontroomToPlayroom = make_shared<Transition>(playroom);
+		shared_ptr<Transition> frontroomToLivingroom = make_shared<Transition>(livingroom);
+		shared_ptr<Transition> playroomToKitchen = make_shared<Transition>(kitchen);
+		shared_ptr<Transition> playroomToHallway = make_shared<Transition>(hallway);
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
+
+		shared_ptr<CommandCondition> alwaysTrueCondition = make_shared<LeaveCondition>(make_shared<commandStatement>(hallway, [](shared_ptr<State> s) {
+			return true;
+		}));
+
+		bedroomToComputerroom->SetCondition(alwaysTrueCondition);
 
 		bedroom->AddTransition(bedroomToComputerroom);
 		bedroom->AddTransition(bedroomToBathroom);
@@ -67,9 +80,9 @@ namespace Forgotten
 		RoomStates.push_back(guestroom);
 		RoomStates.push_back(frontroom);
 		RoomStates.push_back(hallway);
-		RoomStates.push_back(computerroom);*/
+		RoomStates.push_back(computerroom);
 	
-
+		currentState = bedroom;
 	}
 
 	StateMachine& RoomsStateMachine::operator()(shared_ptr<State> state)

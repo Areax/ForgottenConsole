@@ -1,15 +1,16 @@
 #pragma once
+#include "Condition.h"
 
 using namespace std;
 
 namespace Forgotten
 {
-	class Condition;
 	class State;
 
 	class Transition
 	{
 	public:
+		Transition(shared_ptr<State> target);
 		void SetCondition(shared_ptr<Condition> condition);
 		shared_ptr<Condition> GetCondition();
 		void SetTarget(shared_ptr<State> target);

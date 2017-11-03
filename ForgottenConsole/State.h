@@ -3,6 +3,7 @@
 #include <vector>
 #include <functional>
 #include <memory>
+#include "Transition.h"
 
 using namespace std;
 

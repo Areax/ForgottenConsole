@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include "Action.h"
+#include <functional>
+#include "State.h"
 
 namespace Forgotten
 {

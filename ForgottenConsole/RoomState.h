@@ -7,7 +7,7 @@ using namespace std;
 
 namespace Forgotten
 {
-	//class Transition;
+	class Transition;
 
 	class RoomState : public State
 	{
