@@ -177,6 +177,11 @@
     </ClCompile>
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Content\bedroom.txt" />
+    <Text Include="Content\beginning.txt" />
+    <Text Include="Content\computerroom.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
