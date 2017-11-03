@@ -15,6 +15,7 @@ namespace Forgotten
 
 	void RoomsStateMachine::Initialize()
 	{
+		
 		shared_ptr<State> bedroom = make_shared<RoomState>("bedroom");
 		shared_ptr<State> bathroom = make_shared<RoomState>("bathroom");
 		shared_ptr<State> livingroom = make_shared<RoomState>("livingroom");
@@ -45,11 +46,15 @@ namespace Forgotten
 		shared_ptr<Transition> playroomToHallway = make_shared<Transition>(hallway);
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
 
-		shared_ptr<CommandCondition> alwaysTrueCondition = make_shared<LeaveCondition>(make_shared<commandStatement>(hallway, [](shared_ptr<State> s) {
+
+
+		shared_ptr<CommandCondition> alwaysTrueCondition = make_shared<LeaveCondition>(make_shared<commandStatement>([](shared_ptr<State> s) {
 			return true;
 		}));
 
+
 		bedroomToComputerroom->SetCondition(alwaysTrueCondition);
+
 
 		bedroom->AddTransition(bedroomToComputerroom);
 		bedroom->AddTransition(bedroomToBathroom);
@@ -83,11 +88,6 @@ namespace Forgotten
 		RoomStates.push_back(computerroom);
 	
 		currentState = bedroom;
-	}
-
-	StateMachine& RoomsStateMachine::operator()(shared_ptr<State> state)
-	{
-		return (*this);
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()

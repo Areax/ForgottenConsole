@@ -17,8 +17,7 @@ namespace Forgotten
 		shared_ptr<State> getCurrentState();
 
 		virtual void Initialize() = 0;
-		virtual StateMachine& operator()(shared_ptr<State> state);
-		virtual shared_ptr<State> Update();
+		virtual shared_ptr<State> Update() = 0;
 
 	protected:
 		shared_ptr<State> currentState;

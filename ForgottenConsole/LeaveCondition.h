@@ -13,6 +13,5 @@ namespace Forgotten
 
 		LeaveCondition(shared_ptr<commandStatement> mStatement);
 		virtual bool operator()(string command) override;
-		virtual Condition& operator=(commandStatement) override;
 	};
 }

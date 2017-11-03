@@ -12,7 +12,7 @@ namespace Forgotten
 	{
 	protected:
 		virtual bool operator()(string command) = 0;
-		virtual Condition& operator=(commandStatement) = 0;
+		//virtual Condition& operator=(commandStatement) = 0;
 
 		shared_ptr<commandStatement> mCheck;
 	};

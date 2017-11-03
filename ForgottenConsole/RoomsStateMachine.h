@@ -12,7 +12,6 @@ namespace Forgotten
 	public:
 		RoomsStateMachine();
 		virtual void Initialize();
-		virtual StateMachine& operator()(shared_ptr<State> state);
 		virtual shared_ptr<State> Update();
 	};
 }

@@ -11,11 +11,4 @@ namespace Forgotten
 	{
 		return command == "leave";
 	}
-
-	Condition & LeaveCondition::operator=(commandStatement)
-	{
-		return (*this);
-	}
-
-
 }
