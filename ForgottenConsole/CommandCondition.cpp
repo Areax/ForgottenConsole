@@ -2,6 +2,7 @@
 #include <string>
 #include "CommandCondition.h"
 #include "Blackboard.h"
+#include <iostream>
 
 using namespace std;
 
