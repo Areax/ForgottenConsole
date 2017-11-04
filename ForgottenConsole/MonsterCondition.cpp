@@ -1,21 +1,20 @@
 #pragma once
 #include <string>
 #include "MonsterCondition.h"
-#include "Blackboard.h"
+#include "MonsterMoves.h"
 #include <iostream>
 
 using namespace std;
 
 namespace Forgotten
 {
-	MonsterCondition::MonsterCondition(string command, string input)
+	MonsterCondition::MonsterCondition(string move)
 	{
-		mCommand = command;
-		mInput = input;
+		mMove = move;
 	}
 
 	bool MonsterCondition::operator()()
 	{
-		return mCommand == mInput;
+		return mMove == MonsterMoves::GetMove();
 	};
 }

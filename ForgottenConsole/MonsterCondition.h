@@ -9,10 +9,9 @@ namespace Forgotten
 	class MonsterCondition : public Condition
 	{
 	public:
-		MonsterCondition(string command, string input);
+		MonsterCondition(string move);
 		virtual bool operator()();
 
-		string mCommand;
-		string mInput;
+		string mMove;
 	};
 }

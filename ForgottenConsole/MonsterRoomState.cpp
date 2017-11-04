@@ -25,19 +25,18 @@ namespace Forgotten
 
 	void MonsterRoomState::Exit()
 	{
-		//cout << "Now leaving..." << endl;
+		cout << "The monster leaves." << endl;
 	}
 
 	void MonsterRoomState::SetExit()
 	{
-		//cout << "Now leaving..." << endl;
+		cout << "The monster leaves." << endl;
 	}
 
 	shared_ptr<State> MonsterRoomState::Update()
 	{
 		for each(shared_ptr<Transition> t in mTransitions)
 		{
-
 			if (t->IsTriggered())
 				return t->Target();
 		}
