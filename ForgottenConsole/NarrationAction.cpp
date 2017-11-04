@@ -6,14 +6,21 @@ using namespace std;
 
 namespace Forgotten
 {
+	NarrationAction::NarrationAction()
+	{
+
+	}
+
 	NarrationAction::NarrationAction(string name, string textfile)
 	{
 		mName = name;
 		mTextfile = textfile == "" ? name : textfile;
 	}
+
 	void NarrationAction::operator()()
 	{
-		string filename = getFilename("beginning");
+		//string filename = getFilename("beginning");
+		string filename = getFilename(mName);
 		string line;
 		ifstream f(filename);
 

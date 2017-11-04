@@ -144,10 +144,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Desktop\MonsterStateMachine.h" />
     <ClInclude Include="Action.h" />
     <ClInclude Include="Blackboard.h" />
     <ClInclude Include="CommandCondition.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="MonsterStateMachine.h" />
     <ClInclude Include="NarrationAction.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RoomsStateMachine.h" />
@@ -162,6 +164,7 @@
     <ClCompile Include="Blackboard.cpp" />
     <ClCompile Include="CommandCondition.cpp" />
     <ClCompile Include="ForgottenConsole.cpp" />
+    <ClCompile Include="MonsterStateMachine.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RoomsStateMachine.cpp" />
@@ -171,9 +174,11 @@
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Content\bathroom.txt" />
     <Text Include="Content\bedroom.txt" />
     <Text Include="Content\beginning.txt" />
     <Text Include="Content\computerroom.txt" />
+    <Text Include="livingroom.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

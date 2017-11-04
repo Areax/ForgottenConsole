@@ -1,3 +1,4 @@
+#pragma once
 #include "Action.h"
 
 namespace Forgotten
@@ -5,6 +6,7 @@ namespace Forgotten
 	class NarrationAction : public Action
 	{
 	public:
+		NarrationAction();
 		NarrationAction(string name, string textfile = "");
 		virtual void operator()() override;
 		string getFilename(string textfileName);

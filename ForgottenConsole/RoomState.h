@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-//#include "NarrationAction.h"
+#include "NarrationAction.h"
 
 using namespace std;
 
@@ -18,6 +18,7 @@ namespace Forgotten
 		virtual void SetExit();
 		virtual shared_ptr<State> Update() override;
 	private:
-		//NarrationAction narrateEnter;
+		NarrationAction narrateEnter;
+		
 	};
 }

@@ -57,6 +57,12 @@
     <ClInclude Include="NarrationAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Desktop\MonsterStateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterStateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ForgottenConsole.cpp">
@@ -89,6 +95,9 @@
     <ClCompile Include="NarrationAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MonsterStateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Content\beginning.txt">
@@ -98,6 +107,12 @@
       <Filter>Content</Filter>
     </Text>
     <Text Include="Content\computerroom.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="Content\bathroom.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="livingroom.txt">
       <Filter>Content</Filter>
     </Text>
   </ItemGroup>

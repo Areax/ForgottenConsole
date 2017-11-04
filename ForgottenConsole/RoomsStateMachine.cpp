@@ -4,6 +4,7 @@
 #include "Transition.h"
 #include "Commandcondition.h"
 #include "NarrationAction.h"
+#include <iostream>
 
 using namespace std;
 
@@ -48,10 +49,14 @@ namespace Forgotten
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
 
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
+		shared_ptr<Condition> north = make_shared<CommandCondition>("north");
+		shared_ptr<Condition> south = make_shared<CommandCondition>("south");
+		shared_ptr<Condition> east = make_shared<CommandCondition>("east");
+		shared_ptr<Condition> west = make_shared<CommandCondition>("west");
 		
-		bedroomToComputerroom->SetCondition(leave);
-		bedroomToBathroom->SetCondition(leave);
-		bedroomToLivingroom->SetCondition(leave);
+		bedroomToComputerroom->SetCondition(north);
+		bedroomToBathroom->SetCondition(south);
+		bedroomToLivingroom->SetCondition(east);
 
 
 		bedroom->AddTransition(bedroomToComputerroom);

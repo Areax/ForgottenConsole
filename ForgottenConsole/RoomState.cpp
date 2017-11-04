@@ -9,17 +9,17 @@ namespace Forgotten
 	RoomState::RoomState(string name, string textfile)
 	{
 		mName = name;
-		//narrateEnter = NarrationAction(textfile);
+		narrateEnter = NarrationAction(mName);
 	}
 
 	void RoomState::Enter()
 	{
-		//narrateEnter.operator()();
+		narrateEnter.operator()();
 	}
 
 	void RoomState::SetEnter(string textfile)
 	{
-		//narrateEnter = NarrationAction(textfile);
+		narrateEnter = NarrationAction(mName);
 	}
 
 	void RoomState::Exit()
