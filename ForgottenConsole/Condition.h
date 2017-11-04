@@ -14,12 +14,12 @@ namespace Forgotten
 	{
 	public:
 
-		//Condition(shared_ptr<conditionalStatement> mStatement);
-		//virtual bool operator()(shared_ptr<State> state) = 0;
-		//virtual Condition& operator=(conditionalStatement) = 0;
+		Condition(shared_ptr<commandStatement> mStatement);
+		virtual bool operator()(shared_ptr<State> state);
+		virtual Condition& operator=(commandStatement) = 0;
 
 	protected:
-		//shared_ptr<commandStatement> mCheck;
+		shared_ptr<commandStatement> mCheck;
 
 	};
 }

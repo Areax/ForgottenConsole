@@ -3,7 +3,7 @@
 
 namespace Forgotten
 {
-	/*Condition::Condition(shared_ptr<conditionalStatement> mStatement)
+	Condition::Condition(shared_ptr<conditionalStatement> mStatement)
 	{
 		mCheck = mStatement;
 	}
@@ -13,7 +13,6 @@ namespace Forgotten
 		return (mCheck*)(state);
 	}
 
-	*/
 
 
 }
