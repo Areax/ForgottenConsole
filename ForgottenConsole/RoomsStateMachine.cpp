@@ -97,6 +97,7 @@ namespace Forgotten
 	{
 		if (currentState != NULL)
 		{
+			cout << "Current State is : " << currentState->Name() << '\n';
 			shared_ptr<State> newState = currentState->Update();
 
 			if (newState != NULL)

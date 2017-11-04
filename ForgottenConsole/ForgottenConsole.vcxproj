@@ -144,11 +144,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Desktop\MonsterStateMachine.h" />
     <ClInclude Include="Action.h" />
     <ClInclude Include="Blackboard.h" />
     <ClInclude Include="CommandCondition.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="MonsterCondition.h" />
+    <ClInclude Include="MonsterRoomState.h" />
+    <ClInclude Include="MonsterState.h" />
     <ClInclude Include="MonsterStateMachine.h" />
     <ClInclude Include="NarrationAction.h" />
     <ClInclude Include="Player.h" />
@@ -164,6 +166,8 @@
     <ClCompile Include="Blackboard.cpp" />
     <ClCompile Include="CommandCondition.cpp" />
     <ClCompile Include="ForgottenConsole.cpp" />
+    <ClCompile Include="MonsterCondition.cpp" />
+    <ClCompile Include="MonsterRoomState.cpp" />
     <ClCompile Include="MonsterStateMachine.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
     <ClCompile Include="Player.cpp" />
