@@ -145,11 +145,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
-    <ClInclude Include="BaseCondition.h" />
+    <ClInclude Include="Blackboard.h" />
     <ClInclude Include="CommandCondition.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="EnvironmentAction.h" />
-    <ClInclude Include="LeaveCondition.h" />
     <ClInclude Include="RoomsStateMachine.h" />
     <ClInclude Include="RoomState.h" />
     <ClInclude Include="State.h" />
@@ -160,11 +159,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
-    <ClCompile Include="BaseCondition.cpp" />
-    <ClCompile Include="Condition.cpp" />
+    <ClCompile Include="Blackboard.cpp" />
+    <ClCompile Include="CommandCondition.cpp" />
     <ClCompile Include="EnvironmentAction.cpp" />
     <ClCompile Include="ForgottenConsole.cpp" />
-    <ClCompile Include="LeaveCondition.cpp" />
     <ClCompile Include="RoomsStateMachine.cpp" />
     <ClCompile Include="RoomState.cpp" />
     <ClCompile Include="State.cpp" />

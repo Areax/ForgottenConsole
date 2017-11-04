@@ -39,22 +39,19 @@
     <ClInclude Include="Condition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseCondition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RoomsStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RoomState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LeaveCondition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CommandCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnvironmentAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Blackboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -66,9 +63,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StateMachine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Condition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
@@ -86,13 +80,13 @@
     <ClCompile Include="RoomState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BaseCondition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LeaveCondition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EnvironmentAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandCondition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Blackboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
