@@ -48,6 +48,7 @@ namespace Forgotten
 		shared_ptr<Transition> playroomToHallway = make_shared<Transition>(hallway);
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
 
+		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
 		shared_ptr<Condition> north = make_shared<CommandCondition>("north");
 		shared_ptr<Condition> south = make_shared<CommandCondition>("south");

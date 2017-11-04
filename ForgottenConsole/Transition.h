@@ -13,8 +13,8 @@ namespace Forgotten
 		Transition(shared_ptr<State> target);
 		void SetCondition(shared_ptr<Condition> condition);
 		shared_ptr<Condition> GetCondition();
-		void SetTarget(shared_ptr<State> target);
-		shared_ptr<State> Target();
+		virtual void SetTarget(shared_ptr<State> target);
+		virtual shared_ptr<State> Target();
 		bool IsTriggered();
 
 

@@ -10,7 +10,7 @@ namespace Forgotten
 	{
 	public:
 		MonsterCondition(string move);
-		virtual bool operator()();
+		virtual bool operator()() override;
 
 		string mMove;
 	};
