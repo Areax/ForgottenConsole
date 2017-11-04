@@ -6,25 +6,28 @@ using namespace std;
 
 namespace Forgotten
 {
-	RoomState::RoomState(string name)
+	RoomState::RoomState(string name, string textfile)
 	{
 		mName = name;
+		//narrateEnter = NarrationAction(textfile);
 	}
 
 	void RoomState::Enter()
 	{
-		string filename = "Content//" + mName + ".txt"; //Depending on the room we're in, we're going to open the text file associated with that room.
-		ifstream f(filename);
+		//narrateEnter.operator()();
+	}
 
-		if (f.is_open())
-			std::cout << f.rdbuf();
-
-		cout << "Now entering " + mName << endl;
-
-
+	void RoomState::SetEnter(string textfile)
+	{
+		//narrateEnter = NarrationAction(textfile);
 	}
 
 	void RoomState::Exit()
+	{
+		cout << "Now leaving..." << endl;
+	}
+
+	void RoomState::SetExit()
 	{
 		cout << "Now leaving..." << endl;
 	}
