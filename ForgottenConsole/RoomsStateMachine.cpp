@@ -2,7 +2,7 @@
 #include "RoomState.h"
 #include "RoomsStateMachine.h"
 #include "Transition.h"
-#include "LeaveCondition.h"
+#include "Commandcondition.h"
 
 using namespace std;
 
@@ -46,14 +46,11 @@ namespace Forgotten
 		shared_ptr<Transition> playroomToHallway = make_shared<Transition>(hallway);
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
 
-
-
-		shared_ptr<CommandCondition> alwaysTrueCondition = make_shared<LeaveCondition>(make_shared<commandStatement>([](shared_ptr<State> s) {
-			return true;
-		}));
-
-
-		bedroomToComputerroom->SetCondition(alwaysTrueCondition);
+		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
+		
+		bedroomToComputerroom->SetCondition(leave);
+		bedroomToBathroom->SetCondition(leave);
+		bedroomToLivingroom->SetCondition(leave);
 
 
 		bedroom->AddTransition(bedroomToComputerroom);

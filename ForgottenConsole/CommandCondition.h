@@ -1,19 +1,17 @@
 #pragma once
-#include <functional>
+#include <string>
 #include "Condition.h"
 
 using namespace std;
 
 namespace Forgotten
 {
-	//typedef std::function<bool(string)> commandStatement;
-
 	class CommandCondition : public Condition
 	{
-	protected:
-		virtual bool operator()(string command) = 0;
-		//virtual Condition& operator=(commandStatement) = 0;
+	public:
+		CommandCondition(string command);
+		virtual bool operator()();
 
-		shared_ptr<commandStatement> mCheck;
+		string mCommand;
 	};
 }

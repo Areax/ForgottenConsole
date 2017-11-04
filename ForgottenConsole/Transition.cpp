@@ -32,7 +32,7 @@ namespace Forgotten
 
 	bool Transition::IsTriggered()
 	{
-		return true;//mCondition->operator()(mTarget);
+		return mCondition->operator()();
 	}
 
 }
