@@ -3,6 +3,7 @@
 #include "RoomsStateMachine.h"
 #include "Transition.h"
 #include "Commandcondition.h"
+#include "NarrationAction.h"
 
 using namespace std;
 
