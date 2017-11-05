@@ -1,1 +1,1 @@
-Bedrooms are cool.
+You're in the bedroom. From here you can go north to the computer room, south to the bathroom, or east to the living room.

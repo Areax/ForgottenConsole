@@ -1,6 +1,7 @@
 #include <memory>
 #include "RoomState.h"
 #include "RoomsStateMachine.h"
+#include "PlayerState.h"
 #include "Transition.h"
 #include "CommandCondition.h"
 #include "MonsterCondition.h"
@@ -40,6 +41,7 @@ namespace Forgotten
 		shared_ptr<State> frontroom = make_shared<RoomState>("frontroom");
 		shared_ptr<State> hallway = make_shared<RoomState>("hallway");
 		shared_ptr<State> computerroom = make_shared<RoomState>("computerroom");
+		shared_ptr<State> winState = make_shared<RoomState>("victory");
 
 		shared_ptr<Transition> bedroomToComputerroom = make_shared<Transition>(computerroom);
 		shared_ptr<Transition> bedroomToBathroom = make_shared<Transition>(bathroom);
@@ -60,6 +62,8 @@ namespace Forgotten
 		shared_ptr<Transition> playroomToKitchen = make_shared<Transition>(kitchen);
 		shared_ptr<Transition> playroomToFrontroom = make_shared<Transition>(hallway);
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
+		shared_ptr<Transition> victory = make_shared<Transition>(winState);
+
 
 		bedroom->AddTransition(bedroomToComputerroom);
 		bedroom->AddTransition(bedroomToBathroom);
@@ -70,6 +74,7 @@ namespace Forgotten
 		hallway->AddTransition(hallwayToGuestroom);
 		hallway->AddTransition(hallwayToLivingroom);
 		guestroom->AddTransition(guestroomToHallmay);
+		guestroom->AddTransition(victory);
 		//livingroom->AddTransition(livingroomToComputerroom);
 		livingroom->AddTransition(livingroomToKitchen);
 		livingroom->AddTransition(livingroomToBedroom);
@@ -114,6 +119,8 @@ namespace Forgotten
 		shared_ptr<Condition> east = make_shared<RoomCondition>(eastPlayer, eastMonster);
 		shared_ptr<Condition> west = make_shared<RoomCondition>(westPlayer, westMonster);
 
+		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
+		shared_ptr<Condition> win = make_shared<CommandCondition>("VICTORY");
 
 		bedroomToComputerroom->SetCondition(north);
 		bedroomToBathroom->SetCondition(south);
@@ -126,7 +133,9 @@ namespace Forgotten
 		hallwayToBathroom->SetCondition(west);
 		hallwayToGuestroom->SetCondition(south);
 		hallwayToLivingroom->SetCondition(north);
+
 		guestroomToHallmay->SetCondition(north);
+		victory->SetCondition(win);
 
 		livingroomToKitchen->SetCondition(north);
 		livingroomToBedroom->SetCondition(west);
@@ -141,8 +150,6 @@ namespace Forgotten
 
 		kitchenToComputerroom->SetCondition(west);
 
-
-
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()
@@ -154,7 +161,7 @@ namespace Forgotten
 		if (currentState != NULL)
 		{
 			Blackboard::SetTurn(Blackboard::Player);
-			cout << "Current State coming in : " << currentState->Name() << '\n';
+			//cout << "Current State coming in : " << currentState->Name() << '\n';
 			shared_ptr<State> newState = currentState->Update();
 
 			if (newState != NULL)
@@ -164,7 +171,7 @@ namespace Forgotten
 				currentState->Enter();
 			}
 
-			cout << "Current State coming out : " << currentState->Name() << '\n';
+			//cout << "Current State coming out : " << currentState->Name() << '\n';
 		}
 		return NULL;
 	}

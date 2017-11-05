@@ -8,16 +8,15 @@ namespace Forgotten
 {
 	class Transition;
 
-	class MonsterState : public State
+	class PlayerState : public State
 	{
 	public:
-		MonsterState(string name, string textfile = "");
+		PlayerState();
 		virtual void Enter() override;
 		virtual void Exit() override;
 		virtual void SetEnter(string textfile);
 		virtual void SetExit();
 		virtual shared_ptr<State> Update() override;
-
 	private:
 
 	};

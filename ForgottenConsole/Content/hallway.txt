@@ -1,1 +1,1 @@
-You're in the hallway.
+You're in the hallway. You can go north to the living room, south to the hallway, east to the frontroom, or west to the bedroom.

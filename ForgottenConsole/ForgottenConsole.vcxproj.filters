@@ -60,9 +60,6 @@
     <ClInclude Include="MonsterStateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MonsterCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -76,6 +73,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RoomCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -131,6 +131,9 @@
     <ClCompile Include="RoomCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Content\beginning.txt">
@@ -161,6 +164,12 @@
       <Filter>Content</Filter>
     </Text>
     <Text Include="Content\playroom.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="Content\victory.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="book.txt">
       <Filter>Content</Filter>
     </Text>
   </ItemGroup>

@@ -150,12 +150,12 @@
     <ClInclude Include="Condition.h" />
     <ClInclude Include="MonsterCondition.h" />
     <ClInclude Include="MonsterMoves.h" />
-    <ClInclude Include="MonsterState.h" />
     <ClInclude Include="MonsterStateMachine.h" />
     <ClInclude Include="MultipleStatesTransition.h" />
     <ClInclude Include="NarrationAction.h" />
     <ClInclude Include="OrCondition.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerState.h" />
     <ClInclude Include="RoomCondition.h" />
     <ClInclude Include="RoomsStateMachine.h" />
     <ClInclude Include="RoomState.h" />
@@ -177,6 +177,7 @@
     <ClCompile Include="NarrationAction.cpp" />
     <ClCompile Include="OrCondition.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
     <ClCompile Include="RoomCondition.cpp" />
     <ClCompile Include="RoomsStateMachine.cpp" />
     <ClCompile Include="RoomState.cpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="Transition.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="book.txt" />
     <Text Include="Content\bathroom.txt" />
     <Text Include="Content\bedroom.txt" />
     <Text Include="Content\beginning.txt" />
@@ -195,6 +197,7 @@
     <Text Include="Content\kitchen.txt" />
     <Text Include="Content\livingroom.txt" />
     <Text Include="Content\playroom.txt" />
+    <Text Include="Content\victory.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
