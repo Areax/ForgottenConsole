@@ -15,7 +15,7 @@ namespace Forgotten
 		shared_ptr<Condition> GetCondition();
 		virtual void SetTarget(shared_ptr<State> target);
 		virtual shared_ptr<State> Target();
-		bool IsTriggered();
+		virtual bool IsTriggered();
 
 
 	private:
