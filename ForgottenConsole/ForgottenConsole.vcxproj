@@ -153,10 +153,11 @@
     <ClInclude Include="MonsterRoomState.h" />
     <ClInclude Include="MonsterState.h" />
     <ClInclude Include="MonsterStateMachine.h" />
-    <ClInclude Include="MultipleStatesAction.h" />
-    <ClInclude Include="MultipleStatesCondition.h" />
+    <ClInclude Include="MultipleStatesTransition.h" />
     <ClInclude Include="NarrationAction.h" />
+    <ClInclude Include="OrCondition.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RoomCondition.h" />
     <ClInclude Include="RoomsStateMachine.h" />
     <ClInclude Include="RoomState.h" />
     <ClInclude Include="State.h" />
@@ -174,10 +175,11 @@
     <ClCompile Include="MonsterMoves.cpp" />
     <ClCompile Include="MonsterRoomState.cpp" />
     <ClCompile Include="MonsterStateMachine.cpp" />
-    <ClCompile Include="MultilpeStatesCondition.cpp" />
-    <ClCompile Include="MultipleStatesAction.cpp" />
+    <ClCompile Include="MultipleStatesTransition.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
+    <ClCompile Include="OrCondition.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RoomCondition.cpp" />
     <ClCompile Include="RoomsStateMachine.cpp" />
     <ClCompile Include="RoomState.cpp" />
     <ClCompile Include="State.cpp" />

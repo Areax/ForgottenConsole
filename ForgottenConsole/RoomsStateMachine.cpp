@@ -4,6 +4,7 @@
 #include "Transition.h"
 #include "Commandcondition.h"
 #include "NarrationAction.h"
+#include "Blackboard.h"
 #include <iostream>
 
 using namespace std;
@@ -98,6 +99,7 @@ namespace Forgotten
 	{
 		if (currentState != NULL)
 		{
+			Blackboard::SetTurn(Blackboard::Player);
 			cout << "Current State is : " << currentState->Name() << '\n';
 			shared_ptr<State> newState = currentState->Update();
 

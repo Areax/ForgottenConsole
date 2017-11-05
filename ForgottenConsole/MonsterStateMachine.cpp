@@ -8,66 +8,28 @@
 #include "Transition.h"
 #include "MonsterCondition.h"
 #include "MonsterMoves.h"
+#include "Blackboard.h"
 
 using namespace std;
 
 namespace Forgotten
 {
-	MonsterStateMachine::MonsterStateMachine()
-	{
 
+	MonsterStateMachine::MonsterStateMachine(shared_ptr<State> state)
+	{
+		currentState = state;
 	}
 
 	void MonsterStateMachine::Initialize()
 	{
-		shared_ptr<RoomsStateMachine> roomsSM;
-
-		shared_ptr<State> bedroom = make_shared<MonsterRoomState>("bedroom");
-		shared_ptr<State> bathroom = make_shared<MonsterRoomState>("bathroom");
-		shared_ptr<State> livingroom = make_shared<MonsterRoomState>("livingroom");
-		shared_ptr<State> kitchen = make_shared<MonsterRoomState>("kitchen");
-		shared_ptr<State> playroom = make_shared<MonsterRoomState>("playroom");
-		shared_ptr<State> guestroom = make_shared<MonsterRoomState>("guestroom");
-		shared_ptr<State> frontroom = make_shared<MonsterRoomState>("frontroom");
-		shared_ptr<State> hallway = make_shared<MonsterRoomState>("hallway");
-		shared_ptr<State> computerroom = make_shared<MonsterRoomState>("computerroom");
-
-		shared_ptr<Transition> bedroomToComputerroom = make_shared<Transition>(computerroom);
-		shared_ptr<Transition> bedroomToBathroom = make_shared<Transition>(bathroom);
-		shared_ptr<Transition> computerroomToBedroom = make_shared<Transition>(bedroom);
-
-		shared_ptr<Condition> north = make_shared<MonsterCondition>("north");
-		shared_ptr<Condition> south = make_shared<MonsterCondition>("south");
-		shared_ptr<Condition> east = make_shared<MonsterCondition>("east");
-		shared_ptr<Condition> west = make_shared<MonsterCondition>("west");
-
-		bedroomToComputerroom->SetCondition(north);
-		bedroomToBathroom->SetCondition(south);
-		computerroomToBedroom->SetCondition(south);
-
-		bedroom->AddTransition(bedroomToComputerroom);
-		bedroom->AddTransition(bedroomToBathroom);
-		computerroom->AddTransition(computerroomToBedroom);
-
-		vector<shared_ptr<State>> MonsterRoomStates = vector<shared_ptr<State>>();
-		MonsterRoomStates.push_back(bedroom);
-		MonsterRoomStates.push_back(bathroom);
-		MonsterRoomStates.push_back(livingroom);
-		MonsterRoomStates.push_back(kitchen);
-		MonsterRoomStates.push_back(playroom);
-		MonsterRoomStates.push_back(guestroom);
-		MonsterRoomStates.push_back(frontroom);
-		MonsterRoomStates.push_back(hallway);
-		MonsterRoomStates.push_back(computerroom);
-
-		currentState = bedroom;
-
+		//pick currentstate randomly
 	}
 
 	shared_ptr<State> MonsterStateMachine::Update()
 	{
 		if (currentState != NULL)
 		{
+			Blackboard::SetTurn(Blackboard::Monster);
 			srand((unsigned int)time(NULL));
 			monsterMove = rand() % 4;
 

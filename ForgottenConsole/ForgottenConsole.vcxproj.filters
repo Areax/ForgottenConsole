@@ -72,10 +72,13 @@
     <ClInclude Include="MonsterMoves.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MultipleStatesCondition.h">
+    <ClInclude Include="MultipleStatesTransition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MultipleStatesAction.h">
+    <ClInclude Include="OrCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -122,13 +125,16 @@
     <ClCompile Include="MonsterMoves.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MultilpeStatesCondition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MultipleStatesAction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MultipleStatesTransition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OrCondition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

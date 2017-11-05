@@ -5,6 +5,7 @@
 namespace Forgotten
 {
 	string Blackboard::currentCommand = "";
+	Blackboard::Turn Blackboard::currentTurn = Blackboard::Player;
 
 	Blackboard::Blackboard()
 	{
@@ -18,5 +19,15 @@ namespace Forgotten
 	string Blackboard::GetCommand()
 	{
 		return currentCommand;
+	}
+
+	void Blackboard::SetTurn(Turn turn)
+	{
+		currentTurn = turn;
+	}
+
+	Blackboard::Turn Blackboard::GetTurn()
+	{
+		return currentTurn;
 	}
 }

@@ -10,8 +10,8 @@ namespace Forgotten
 	class MonsterStateMachine : public StateMachine
 	{
 	public:
-		MonsterStateMachine();
-		virtual void Initialize();
+		MonsterStateMachine(shared_ptr<State> state);
+		virtual void Initialize() override;
 		virtual shared_ptr<State> Update();
 
 	private:

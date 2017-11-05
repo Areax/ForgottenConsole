@@ -6,9 +6,12 @@ using namespace std;
 
 namespace Forgotten
 {
-	NarrationAction::NarrationAction(string name, string textfile)
+	NarrationAction::NarrationAction()
 	{
-		mName = name;
+	}
+
+	NarrationAction::NarrationAction(string name, string textfile) : Action(name)
+	{
 		mTextfile = textfile == "" ? name : textfile;
 	}
 

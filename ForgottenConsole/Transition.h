@@ -18,7 +18,7 @@ namespace Forgotten
 		virtual bool IsTriggered();
 
 
-	private:
+	protected:
 		shared_ptr<Condition> mCondition;
 		shared_ptr<State> mTarget;
 	};

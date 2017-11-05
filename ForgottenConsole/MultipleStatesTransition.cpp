@@ -1,6 +1,8 @@
 #include <string>
 #include <vector>
-#include<algorithm>
+#include <algorithm>
+#include <cstdlib>
+#include "CommandCondition.h"
 #include "MultipleStatesTransition.h"
 #include "Blackboard.h"
 
@@ -8,11 +10,11 @@ using namespace std;
 
 namespace Forgotten
 {
-	MultipleStatesTransition::MultipleStatesTransition() : CommandCondition(null)
+	MultipleStatesTransition::MultipleStatesTransition() : Transition(NULL)
 	{
 	}
 
-	bool MultipleStatesTransition::AddState(shared_ptr<State> s)
+	void MultipleStatesTransition::AddState(shared_ptr<State> s)
 	{
 		mStates.push_back(s);
 	}
@@ -22,13 +24,14 @@ namespace Forgotten
 		mStates.erase(remove(mStates.begin(), mStates.end(), s), mStates.end());
 	}
 	
-	void MultipleStatesTransition::IsTriggered()
+	bool MultipleStatesTransition::IsTriggered()
 	{
 		if(Transition::IsTriggered())
 		{
-			int r = random_element(0, (int)mStates.size());
-			mTarget = mStates[r];
+			mTarget = *select_randomly(mStates.begin(), mStates.end());
+			return true;
 		}
+		return false;
 	}
 
 }
