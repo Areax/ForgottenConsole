@@ -27,19 +27,18 @@ namespace Forgotten
 
 	void RoomState::Exit()
 	{
-		cout << "Now leaving..." << endl;
+		//cout << "Now leaving..." << endl;
 	}
 
 	void RoomState::SetExit()
 	{
-		cout << "Now leaving..." << endl;
+		//cout << "Now leaving..." << endl;
 	}
 
 	shared_ptr<State> RoomState::Update()
 	{
 		for each(shared_ptr<Transition> t in mTransitions)
 		{
-			
 			if (t->IsTriggered())
 				return t->Target();
 		}

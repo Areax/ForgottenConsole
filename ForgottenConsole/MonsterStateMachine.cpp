@@ -34,8 +34,7 @@ namespace Forgotten
 			MonsterMoves::SetMove(direction[monsterMove]);
 
 			shared_ptr<State> newState = currentState->Update();
-			cout << "ms";
-			cout << "Monster is in: " << currentState->Name() << '\n';
+			cout << "Monster went from: " << currentState->Name() << '\n';
 
 			if (newState != NULL)
 			{
@@ -43,6 +42,8 @@ namespace Forgotten
 				currentState = newState;
 				currentState->Enter();
 			}
+
+			cout << "Monster went to: " << currentState->Name() << '\n';
 		}
 		return NULL;
 	}

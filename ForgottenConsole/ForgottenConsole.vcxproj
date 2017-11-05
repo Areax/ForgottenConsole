@@ -189,7 +189,12 @@
     <Text Include="Content\bedroom.txt" />
     <Text Include="Content\beginning.txt" />
     <Text Include="Content\computerroom.txt" />
-    <Text Include="livingroom.txt" />
+    <Text Include="Content\frontroom.txt" />
+    <Text Include="Content\guestroom.txt" />
+    <Text Include="Content\hallway.txt" />
+    <Text Include="Content\kitchen.txt" />
+    <Text Include="Content\livingroom.txt" />
+    <Text Include="Content\playroom.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

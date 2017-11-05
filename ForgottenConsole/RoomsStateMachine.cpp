@@ -50,7 +50,7 @@ namespace Forgotten
 		shared_ptr<Transition> hallwayToGuestroom = make_shared<Transition>(guestroom);
 		shared_ptr<Transition> hallwayToLivingroom = make_shared<Transition>(livingroom);
 		shared_ptr<Transition> guestroomToHallmay = make_shared<Transition>(hallway);
-		shared_ptr<Transition> livingroomToComputerroom = make_shared<Transition>(computerroom);
+		//shared_ptr<Transition> livingroomToComputerroom = make_shared<Transition>(computerroom);
 		shared_ptr<Transition> livingroomToKitchen = make_shared<Transition>(kitchen);
 		shared_ptr<Transition> livingroomToBedroom = make_shared<Transition>(bedroom);
 		shared_ptr<Transition> livingroomToFrontroom = make_shared<Transition>(frontroom);
@@ -58,7 +58,7 @@ namespace Forgotten
 		shared_ptr<Transition> frontroomToPlayroom = make_shared<Transition>(playroom);
 		shared_ptr<Transition> frontroomToLivingroom = make_shared<Transition>(livingroom);
 		shared_ptr<Transition> playroomToKitchen = make_shared<Transition>(kitchen);
-		shared_ptr<Transition> playroomToHallway = make_shared<Transition>(hallway);
+		shared_ptr<Transition> playroomToFrontroom = make_shared<Transition>(hallway);
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
 
 		bedroom->AddTransition(bedroomToComputerroom);
@@ -70,7 +70,7 @@ namespace Forgotten
 		hallway->AddTransition(hallwayToGuestroom);
 		hallway->AddTransition(hallwayToLivingroom);
 		guestroom->AddTransition(guestroomToHallmay);
-		livingroom->AddTransition(livingroomToComputerroom);
+		//livingroom->AddTransition(livingroomToComputerroom);
 		livingroom->AddTransition(livingroomToKitchen);
 		livingroom->AddTransition(livingroomToBedroom);
 		livingroom->AddTransition(livingroomToFrontroom);
@@ -78,7 +78,7 @@ namespace Forgotten
 		frontroom->AddTransition(frontroomToPlayroom);
 		frontroom->AddTransition(frontroomToLivingroom);
 		playroom->AddTransition(playroomToKitchen);
-		playroom->AddTransition(playroomToHallway);
+		playroom->AddTransition(playroomToFrontroom);
 		kitchen->AddTransition(kitchenToComputerroom);
 
 		vector<shared_ptr<State>> RoomStates = vector<shared_ptr<State>>();
@@ -94,8 +94,8 @@ namespace Forgotten
 	
 		currentState = bedroom;
 
-		monster = make_shared<MonsterStateMachine>(getCurrentState());
-		monster->Initialize();
+		//monster = make_shared<MonsterStateMachine>(getCurrentState());
+		//monster->Initialize();
 
 		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
@@ -118,18 +118,43 @@ namespace Forgotten
 		bedroomToComputerroom->SetCondition(north);
 		bedroomToBathroom->SetCondition(south);
 		bedroomToLivingroom->SetCondition(east);
+
+		computerroomToBedroom->SetCondition(south);
+
+		bathroomToHallway->SetCondition(east);
+
+		hallwayToBathroom->SetCondition(west);
+		hallwayToGuestroom->SetCondition(south);
+		hallwayToLivingroom->SetCondition(north);
+		guestroomToHallmay->SetCondition(north);
+
+		livingroomToKitchen->SetCondition(north);
+		livingroomToBedroom->SetCondition(west);
+		livingroomToHallway->SetCondition(south);
+		livingroomToFrontroom->SetCondition(east);
+
+		frontroomToLivingroom->SetCondition(west);
+		frontroomToPlayroom->SetCondition(north);
+
+		playroomToKitchen->SetCondition(west);
+		playroomToFrontroom->SetCondition(south);
+
+		kitchenToComputerroom->SetCondition(west);
+
+
+
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()
 	{
 		// keyword: rethink.  Should monster be updated first? If so chasing is very easy
 		// if not, character may run into position where the monster can 'see' him/her
-		monster->Update();
+		//monster->Update();
 
 		if (currentState != NULL)
 		{
 			Blackboard::SetTurn(Blackboard::Player);
-			cout << "Current State is : " << currentState->Name() << '\n';
+			cout << "Current State coming in : " << currentState->Name() << '\n';
 			shared_ptr<State> newState = currentState->Update();
 
 			if (newState != NULL)
@@ -138,6 +163,8 @@ namespace Forgotten
 				currentState = newState;
 				currentState->Enter();
 			}
+
+			cout << "Current State coming out : " << currentState->Name() << '\n';
 		}
 		return NULL;
 	}

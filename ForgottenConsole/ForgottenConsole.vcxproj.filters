@@ -145,7 +145,22 @@
     <Text Include="Content\bathroom.txt">
       <Filter>Content</Filter>
     </Text>
-    <Text Include="livingroom.txt">
+    <Text Include="Content\frontroom.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="Content\guestroom.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="Content\hallway.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="Content\kitchen.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="Content\livingroom.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="Content\playroom.txt">
       <Filter>Content</Filter>
     </Text>
   </ItemGroup>
