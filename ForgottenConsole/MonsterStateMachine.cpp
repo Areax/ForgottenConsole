@@ -2,8 +2,6 @@
 #include <stdlib.h>  
 #include <time.h> 
 #include <iostream>
-#include "MonsterRoomState.h"
-#include "MonsterStateMachine.h"
 #include "RoomsStateMachine.h"
 #include "Transition.h"
 #include "MonsterCondition.h"
@@ -36,7 +34,7 @@ namespace Forgotten
 			MonsterMoves::SetMove(direction[monsterMove]);
 
 			shared_ptr<State> newState = currentState->Update();
-
+			cout << "ms";
 			cout << "Monster is in: " << currentState->Name() << '\n';
 
 			if (newState != NULL)

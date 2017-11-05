@@ -2,10 +2,14 @@
 #include "RoomState.h"
 #include "RoomsStateMachine.h"
 #include "Transition.h"
-#include "Commandcondition.h"
+#include "CommandCondition.h"
+#include "MonsterCondition.h"
 #include "NarrationAction.h"
 #include "Blackboard.h"
+#include "RoomCondition.h"
+#include "MonsterStateMachine.h"
 #include <iostream>
+
 
 using namespace std;
 
@@ -18,7 +22,15 @@ namespace Forgotten
 
 	void RoomsStateMachine::Initialize()
 	{
-		
+		// keyword: a lot of work lol.  Time to implement all of the south/west/north/east !!!
+		// then we'll need to add a state where, if the letter was lost, you're screwed.  Should be somewhere in the code
+		// in any case, basic text comes first
+		// trying currently to implement the following:
+		// run, flee, leave (randomly picks a Target to flee to, MultipleStateTransitions)
+		// dictionary (prints out all words that we can use. HashMap maps word -> definition (definitions hidden until you lose more letters)
+		// win, lose, unlock, east, finish, leave, transcend, die, complete (finishes the game (only with key & in front room), but all have different text files. Neat right?)
+		// remove, kill, delete + letter (resets monster to a random room (or the kitchen? maybe he just eats it) but you lose that letter. Shouldn't be a hard action to implement)
+		// advanced actions would probably include obscure words to utilize for more fun situations (less popular letters too like b,z,x,y,g,h,j,q,r,u,v,w)
 		shared_ptr<State> bedroom = make_shared<RoomState>("bedroom");
 		shared_ptr<State> bathroom = make_shared<RoomState>("bathroom");
 		shared_ptr<State> livingroom = make_shared<RoomState>("livingroom");
@@ -48,18 +60,6 @@ namespace Forgotten
 		shared_ptr<Transition> playroomToKitchen = make_shared<Transition>(kitchen);
 		shared_ptr<Transition> playroomToHallway = make_shared<Transition>(hallway);
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
-
-		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
-		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
-		shared_ptr<Condition> north = make_shared<CommandCondition>("north");
-		shared_ptr<Condition> south = make_shared<CommandCondition>("south");
-		shared_ptr<Condition> east = make_shared<CommandCondition>("east");
-		shared_ptr<Condition> west = make_shared<CommandCondition>("west");
-		
-		bedroomToComputerroom->SetCondition(north);
-		bedroomToBathroom->SetCondition(south);
-		bedroomToLivingroom->SetCondition(east);
-
 
 		bedroom->AddTransition(bedroomToComputerroom);
 		bedroom->AddTransition(bedroomToBathroom);
@@ -93,10 +93,39 @@ namespace Forgotten
 		RoomStates.push_back(computerroom);
 	
 		currentState = bedroom;
+
+		monster = make_shared<MonsterStateMachine>(getCurrentState());
+		monster->Initialize();
+
+		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
+		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
+		shared_ptr<Condition> northPlayer = make_shared<CommandCondition>("north");
+		shared_ptr<Condition> southPlayer = make_shared<CommandCondition>("south");
+		shared_ptr<Condition> eastPlayer = make_shared<CommandCondition>("east");
+		shared_ptr<Condition> westPlayer = make_shared<CommandCondition>("west");
+
+		shared_ptr<Condition> northMonster = make_shared<MonsterCondition>("north");
+		shared_ptr<Condition> southMonster = make_shared<MonsterCondition>("south");
+		shared_ptr<Condition> eastMonster = make_shared<MonsterCondition>("east");
+		shared_ptr<Condition> westMonster = make_shared<MonsterCondition>("west");
+
+		shared_ptr<Condition> north = make_shared<RoomCondition>(northPlayer, northMonster);
+		shared_ptr<Condition> south = make_shared<RoomCondition>(southPlayer, southMonster);
+		shared_ptr<Condition> east = make_shared<RoomCondition>(eastPlayer, eastMonster);
+		shared_ptr<Condition> west = make_shared<RoomCondition>(westPlayer, westMonster);
+
+
+		bedroomToComputerroom->SetCondition(north);
+		bedroomToBathroom->SetCondition(south);
+		bedroomToLivingroom->SetCondition(east);
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()
 	{
+		// keyword: rethink.  Should monster be updated first? If so chasing is very easy
+		// if not, character may run into position where the monster can 'see' him/her
+		monster->Update();
+
 		if (currentState != NULL)
 		{
 			Blackboard::SetTurn(Blackboard::Player);

@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <functional>
 #include "Condition.h"
 
 using namespace std;

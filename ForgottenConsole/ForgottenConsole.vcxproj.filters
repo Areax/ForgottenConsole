@@ -66,9 +66,6 @@
     <ClInclude Include="MonsterCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterRoomState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MonsterMoves.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -117,9 +114,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonsterCondition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterRoomState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonsterMoves.cpp">
