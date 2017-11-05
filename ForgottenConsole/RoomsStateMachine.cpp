@@ -1,7 +1,6 @@
 #include <memory>
 #include "RoomState.h"
 #include "RoomsStateMachine.h"
-#include "PlayerState.h"
 #include "Transition.h"
 #include "CommandCondition.h"
 #include "MonsterCondition.h"
@@ -10,6 +9,8 @@
 #include "RoomCondition.h"
 #include "MonsterStateMachine.h"
 #include <iostream>
+#include <stdlib.h>  
+#include <time.h> 
 
 
 using namespace std;
@@ -87,20 +88,25 @@ namespace Forgotten
 		kitchen->AddTransition(kitchenToComputerroom);
 
 		vector<shared_ptr<State>> RoomStates = vector<shared_ptr<State>>();
-		RoomStates.push_back(bedroom);
 		RoomStates.push_back(bathroom);
 		RoomStates.push_back(livingroom);
-		RoomStates.push_back(kitchen);
 		RoomStates.push_back(playroom);
-		RoomStates.push_back(guestroom);
 		RoomStates.push_back(frontroom);
 		RoomStates.push_back(hallway);
 		RoomStates.push_back(computerroom);
+		RoomStates.push_back(bedroom);
+		RoomStates.push_back(kitchen);
+		RoomStates.push_back(guestroom);
 	
 		currentState = bedroom;
 
-		//monster = make_shared<MonsterStateMachine>(getCurrentState());
-		//monster->Initialize();
+		monster = make_shared<MonsterStateMachine>(getCurrentState());
+		monster->Initialize();
+
+		srand((unsigned int)time(NULL));
+		int monsterStart = rand() % 4;
+		monster->setCurrentState(RoomStates[monsterStart]); //Randomly places a monster in a room that's not in computer room, kitchen, bedroom, or guestroom.
+
 
 		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
@@ -122,33 +128,33 @@ namespace Forgotten
 		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
 		shared_ptr<Condition> win = make_shared<CommandCondition>("VICTORY");
 
-		bedroomToComputerroom->SetCondition(north);
-		bedroomToBathroom->SetCondition(south);
-		bedroomToLivingroom->SetCondition(east);
+		bedroomToComputerroom->SetCondition(northPlayer);
+		bedroomToBathroom->SetCondition(southPlayer);
+		bedroomToLivingroom->SetCondition(eastPlayer);
 
-		computerroomToBedroom->SetCondition(south);
+		computerroomToBedroom->SetCondition(southPlayer);
 
-		bathroomToHallway->SetCondition(east);
+		bathroomToHallway->SetCondition(eastPlayer);
 
-		hallwayToBathroom->SetCondition(west);
-		hallwayToGuestroom->SetCondition(south);
+		hallwayToBathroom->SetCondition(westPlayer);
+		hallwayToGuestroom->SetCondition(southPlayer);
 		hallwayToLivingroom->SetCondition(north);
 
-		guestroomToHallmay->SetCondition(north);
+		guestroomToHallmay->SetCondition(northPlayer);
 		victory->SetCondition(win);
 
-		livingroomToKitchen->SetCondition(north);
-		livingroomToBedroom->SetCondition(west);
+		livingroomToKitchen->SetCondition(northPlayer);
+		livingroomToBedroom->SetCondition(westPlayer);
 		livingroomToHallway->SetCondition(south);
 		livingroomToFrontroom->SetCondition(east);
 
 		frontroomToLivingroom->SetCondition(west);
 		frontroomToPlayroom->SetCondition(north);
 
-		playroomToKitchen->SetCondition(west);
+		playroomToKitchen->SetCondition(westPlayer);
 		playroomToFrontroom->SetCondition(south);
 
-		kitchenToComputerroom->SetCondition(west);
+		kitchenToComputerroom->SetCondition(westPlayer);
 
 	}
 
@@ -156,7 +162,8 @@ namespace Forgotten
 	{
 		// keyword: rethink.  Should monster be updated first? If so chasing is very easy
 		// if not, character may run into position where the monster can 'see' him/her
-		//monster->Update();
+		
+		monster->Update();
 
 		if (currentState != NULL)
 		{

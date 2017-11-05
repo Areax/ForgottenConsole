@@ -20,7 +20,7 @@ namespace Forgotten
 
 	void MonsterStateMachine::Initialize()
 	{
-		//pick currentstate randomly
+
 	}
 
 	shared_ptr<State> MonsterStateMachine::Update()
