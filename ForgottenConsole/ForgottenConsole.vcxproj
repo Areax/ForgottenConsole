@@ -174,6 +174,8 @@
     <ClCompile Include="MonsterStateMachine.cpp" />
     <ClCompile Include="MultipleStatesTransition.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
+    <ClCompile Include="NearCondition.cpp" />
+    <ClCompile Include="NearCondition.h" />
     <ClCompile Include="OrCondition.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RoomCondition.cpp" />
@@ -194,6 +196,7 @@
     <Text Include="Content\hallway.txt" />
     <Text Include="Content\kitchen.txt" />
     <Text Include="Content\livingroom.txt" />
+    <Text Include="Content\loser.txt" />
     <Text Include="Content\playroom.txt" />
     <Text Include="Content\victory.txt" />
   </ItemGroup>

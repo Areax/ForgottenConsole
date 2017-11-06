@@ -5,6 +5,7 @@
 #include "CommandCondition.h"
 #include "MonsterCondition.h"
 #include "NarrationAction.h"
+#include "NearCondition.h"
 #include "Blackboard.h"
 #include "RoomCondition.h"
 #include "MonsterStateMachine.h"
@@ -66,6 +67,7 @@ namespace Forgotten
 		shared_ptr<Transition> victory = make_shared<Transition>(winState);
 
 
+
 		bedroom->AddTransition(bedroomToComputerroom);
 		bedroom->AddTransition(bedroomToBathroom);
 		bedroom->AddTransition(bedroomToLivingroom);
@@ -88,11 +90,11 @@ namespace Forgotten
 		kitchen->AddTransition(kitchenToComputerroom);
 
 		vector<shared_ptr<State>> RoomStates = vector<shared_ptr<State>>();
-		RoomStates.push_back(bathroom);
 		RoomStates.push_back(livingroom);
 		RoomStates.push_back(playroom);
 		RoomStates.push_back(frontroom);
 		RoomStates.push_back(hallway);
+		RoomStates.push_back(bathroom);
 		RoomStates.push_back(computerroom);
 		RoomStates.push_back(bedroom);
 		RoomStates.push_back(kitchen);
@@ -104,7 +106,7 @@ namespace Forgotten
 		monster->Initialize();
 
 		srand((unsigned int)time(NULL));
-		int monsterStart = rand() % 4;
+		int monsterStart = rand() % 3;
 		monster->setCurrentState(RoomStates[monsterStart]); //Randomly places a monster in a room that's not in computer room, kitchen, bedroom, or guestroom.
 
 
@@ -126,7 +128,7 @@ namespace Forgotten
 		shared_ptr<Condition> west = make_shared<RoomCondition>(westPlayer, westMonster);
 
 		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
-		shared_ptr<Condition> win = make_shared<CommandCondition>("VICTORY");
+		shared_ptr<Condition> win = make_shared<CommandCondition>("remember");
 
 		bedroomToComputerroom->SetCondition(northPlayer);
 		bedroomToBathroom->SetCondition(southPlayer);
@@ -150,12 +152,10 @@ namespace Forgotten
 
 		frontroomToLivingroom->SetCondition(west);
 		frontroomToPlayroom->SetCondition(north);
-
 		playroomToKitchen->SetCondition(westPlayer);
 		playroomToFrontroom->SetCondition(south);
 
 		kitchenToComputerroom->SetCondition(westPlayer);
-
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()
@@ -168,7 +168,6 @@ namespace Forgotten
 		if (currentState != NULL)
 		{
 			Blackboard::SetTurn(Blackboard::Player);
-			//cout << "Current State coming in : " << currentState->Name() << '\n';
 			shared_ptr<State> newState = currentState->Update();
 
 			if (newState != NULL)
@@ -177,8 +176,6 @@ namespace Forgotten
 				currentState = newState;
 				currentState->Enter();
 			}
-
-			//cout << "Current State coming out : " << currentState->Name() << '\n';
 		}
 		return NULL;
 	}
