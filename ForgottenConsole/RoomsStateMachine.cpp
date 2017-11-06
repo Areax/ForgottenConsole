@@ -9,8 +9,6 @@
 #include "RoomCondition.h"
 #include "MonsterStateMachine.h"
 #include <iostream>
-#include <stdlib.h>  
-#include <time.h> 
 
 
 using namespace std;
@@ -120,32 +118,32 @@ namespace Forgotten
 		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
 		shared_ptr<Condition> win = make_shared<CommandCondition>("remember");
 
-		bedroomToComputerroom->SetCondition(north);
-		bedroomToBathroom->SetCondition(south);
-		bedroomToLivingroom->SetCondition(east);
+		bedroomToComputerroom->SetCondition(northPlayer);
+		bedroomToBathroom->SetCondition(southPlayer);
+		bedroomToLivingroom->SetCondition(eastPlayer);
 
-		computerroomToBedroom->SetCondition(south);
+		computerroomToBedroom->SetCondition(southPlayer);
 
-		bathroomToHallway->SetCondition(east);
+		bathroomToHallway->SetCondition(eastPlayer);
 
-		hallwayToBathroom->SetCondition(west);
-		hallwayToGuestroom->SetCondition(south);
-		hallwayToLivingroom->SetCondition(north);
+		hallwayToBathroom->SetCondition(westPlayer);
+		hallwayToGuestroom->SetCondition(southPlayer);
+		hallwayToLivingroom->SetCondition(northPlayer);
 
-		guestroomToHallmay->SetCondition(north);
+		guestroomToHallmay->SetCondition(northPlayer);
 		victory->SetCondition(win);
 
-		livingroomToKitchen->SetCondition(north);
-		livingroomToBedroom->SetCondition(west);
-		livingroomToHallway->SetCondition(south);
-		livingroomToFrontroom->SetCondition(east);
+		livingroomToKitchen->SetCondition(northPlayer);
+		livingroomToBedroom->SetCondition(westPlayer);
+		livingroomToHallway->SetCondition(southPlayer);
+		livingroomToFrontroom->SetCondition(eastPlayer);
 
-		frontroomToLivingroom->SetCondition(west);
-		frontroomToPlayroom->SetCondition(north);
-		playroomToKitchen->SetCondition(west);
-		playroomToFrontroom->SetCondition(south);
+		frontroomToLivingroom->SetCondition(westPlayer);
+		frontroomToPlayroom->SetCondition(northPlayer);
+		playroomToKitchen->SetCondition(westPlayer);
+		playroomToFrontroom->SetCondition(southPlayer);
 
-		kitchenToComputerroom->SetCondition(west);
+		kitchenToComputerroom->SetCondition(westPlayer);
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()
