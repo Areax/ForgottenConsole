@@ -10,6 +10,7 @@
 #include "Blackboard.h"
 #include "RoomCondition.h"
 #include "MonsterStateMachine.h"
+#include "OrCondition.h"
 #include <iostream>
 #include <stdlib.h>  
 #include <time.h> 
@@ -68,58 +69,58 @@ namespace Forgotten
 		shared_ptr<Transition> victory = make_shared<Transition>(winState);
 
 		MultipleStatesTransition bedroomLeavingRaw = MultipleStatesTransition();
-		bedroomLeavingRaw.AddState(computerroom);
-		bedroomLeavingRaw.AddState(bathroom);
-		bedroomLeavingRaw.AddState(livingroom);
+		bedroomLeavingRaw.AddTarget(computerroom);
+		bedroomLeavingRaw.AddTarget(bathroom);
+		bedroomLeavingRaw.AddTarget(livingroom);
 		shared_ptr<Transition> bedroomLeaving = make_shared<MultipleStatesTransition>(bedroomLeavingRaw);
 		bedroom->AddTransition(bedroomLeaving);
 
 		MultipleStatesTransition computerroomLeavingRaw = MultipleStatesTransition();
-		computerroomLeavingRaw.AddState(bedroom);
+		computerroomLeavingRaw.AddTarget(bedroom);
 		shared_ptr<Transition> computerroomLeaving = make_shared<MultipleStatesTransition>(computerroomLeavingRaw);
 		computerroom->AddTransition(computerroomLeaving);
 
 		MultipleStatesTransition bathroomLeavingRaw = MultipleStatesTransition();
-		bathroomLeavingRaw.AddState(hallway);
+		bathroomLeavingRaw.AddTarget(hallway);
 		shared_ptr<Transition> bathroomLeaving = make_shared<MultipleStatesTransition>(bathroomLeavingRaw);
 		bathroom->AddTransition(bathroomLeaving);
 
 		MultipleStatesTransition hallwayLeavingRaw = MultipleStatesTransition();
-		hallwayLeavingRaw.AddState(bathroom);
-		hallwayLeavingRaw.AddState(guestroom);
-		hallwayLeavingRaw.AddState(livingroom);
+		hallwayLeavingRaw.AddTarget(bathroom);
+		hallwayLeavingRaw.AddTarget(guestroom);
+		hallwayLeavingRaw.AddTarget(livingroom);
 		shared_ptr<Transition> hallwayLeaving = make_shared<MultipleStatesTransition>(hallwayLeavingRaw);
 		hallway->AddTransition(hallwayLeaving);
 
 		MultipleStatesTransition guestroomLeavingRaw = MultipleStatesTransition();
-		guestroomLeavingRaw.AddState(computerroom);
+		guestroomLeavingRaw.AddTarget(computerroom);
 		shared_ptr<Transition> guestroomLeaving = make_shared<MultipleStatesTransition>(guestroomLeavingRaw);
 		guestroom->AddTransition(guestroomLeaving);
 
 		MultipleStatesTransition livingroomLeavingRaw = MultipleStatesTransition();
-		livingroomLeavingRaw.AddState(kitchen);
-		livingroomLeavingRaw.AddState(bedroom);
-		livingroomLeavingRaw.AddState(frontroom);
-		livingroomLeavingRaw.AddState(hallway);
+		livingroomLeavingRaw.AddTarget(kitchen);
+		livingroomLeavingRaw.AddTarget(bedroom);
+		livingroomLeavingRaw.AddTarget(frontroom);
+		livingroomLeavingRaw.AddTarget(hallway);
 		shared_ptr<Transition> livingroomLeaving = make_shared<MultipleStatesTransition>(livingroomLeavingRaw);
 		livingroom->AddTransition(livingroomLeaving);
 
 		MultipleStatesTransition frontroomLeavingRaw = MultipleStatesTransition();
-		frontroomLeavingRaw.AddState(playroom);
-		frontroomLeavingRaw.AddState(livingroom);
+		frontroomLeavingRaw.AddTarget(playroom);
+		frontroomLeavingRaw.AddTarget(livingroom);
 		shared_ptr<Transition> frontroomLeaving = make_shared<MultipleStatesTransition>(frontroomLeavingRaw);
 		frontroom->AddTransition(frontroomLeaving);
 
 		MultipleStatesTransition playroomLeavingRaw = MultipleStatesTransition();
-		playroomLeavingRaw.AddState(kitchen);
-		playroomLeavingRaw.AddState(frontroom);
+		playroomLeavingRaw.AddTarget(kitchen);
+		playroomLeavingRaw.AddTarget(frontroom);
 		shared_ptr<Transition> playroomLeaving = make_shared<MultipleStatesTransition>(playroomLeavingRaw);
 		playroom->AddTransition(playroomLeaving);
 
 		MultipleStatesTransition kitchenLeavingRaw = MultipleStatesTransition();
-		kitchenLeavingRaw.AddState(computerroom);
-		kitchenLeavingRaw.AddState(bathroom);
-		kitchenLeavingRaw.AddState(livingroom);
+		kitchenLeavingRaw.AddTarget(computerroom);
+		kitchenLeavingRaw.AddTarget(bathroom);
+		kitchenLeavingRaw.AddTarget(livingroom);
 		shared_ptr<Transition> kitchenLeaving = make_shared<MultipleStatesTransition>(kitchenLeavingRaw);
 		kitchen->AddTransition(kitchenLeaving);
 
@@ -167,6 +168,7 @@ namespace Forgotten
 
 		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
+		shared_ptr<Condition> flee = make_shared<CommandCondition>("flee");
 		shared_ptr<Condition> northPlayer = make_shared<CommandCondition>("north");
 		shared_ptr<Condition> southPlayer = make_shared<CommandCondition>("south");
 		shared_ptr<Condition> eastPlayer = make_shared<CommandCondition>("east");
@@ -185,15 +187,18 @@ namespace Forgotten
 		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
 		shared_ptr<Condition> win = make_shared<CommandCondition>("remember");
 
-		bedroomLeaving->SetCondition(run);
-		computerroomLeaving->SetCondition(run);
-		bathroomLeaving->SetCondition(run);
-		hallwayLeaving->SetCondition(run);
-		guestroomLeaving->SetCondition(run);
-		livingroomLeaving->SetCondition(run);
-		frontroomLeaving->SetCondition(run);
-		playroomLeaving->SetCondition(run);
-		kitchenLeaving->SetCondition(run);
+		shared_ptr<OrCondition> partialLeaveRoom = make_shared<OrCondition>(leave, flee);
+		shared_ptr<OrCondition> leaveRoom = make_shared<OrCondition>(run, partialLeaveRoom);
+
+		bedroomLeaving->SetCondition(leaveRoom);
+		computerroomLeaving->SetCondition(leaveRoom);
+		bathroomLeaving->SetCondition(leaveRoom);
+		hallwayLeaving->SetCondition(leaveRoom);
+		guestroomLeaving->SetCondition(leaveRoom);
+		livingroomLeaving->SetCondition(leaveRoom);
+		frontroomLeaving->SetCondition(leaveRoom);
+		playroomLeaving->SetCondition(leaveRoom);
+		kitchenLeaving->SetCondition(leaveRoom);
 
 		bedroomToComputerroom->SetCondition(northPlayer);
 		bedroomToBathroom->SetCondition(southPlayer);

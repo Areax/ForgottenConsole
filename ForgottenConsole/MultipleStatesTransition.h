@@ -2,6 +2,7 @@
 #include <memory>
 #include <random>
 #include "Transition.h"
+#include "Condition.h"
 
 using namespace std;
 
@@ -13,12 +14,13 @@ namespace Forgotten
 	{
 	public:
 		MultipleStatesTransition();
-		void AddState(shared_ptr<State> target);
-		void RemoveState(shared_ptr<State> s);
+		void AddTarget(shared_ptr<State> target);
+		void RemoveTarget(shared_ptr<State> s);
 		virtual bool IsTriggered() override;
 	
 	private:
-		vector<shared_ptr<State>> mStates;
+		vector<shared_ptr<State>> mTargets;
+		vector<shared_ptr<Condition>> mConditions;
 
 		template<typename Iter, typename RandomGenerator>
 		Iter select_randomly(Iter start, Iter end, RandomGenerator& g) {

@@ -14,21 +14,21 @@ namespace Forgotten
 	{
 	}
 
-	void MultipleStatesTransition::AddState(shared_ptr<State> s)
+	void MultipleStatesTransition::AddTarget(shared_ptr<State> s)
 	{
-		mStates.push_back(s);
+		mTargets.push_back(s);
 	}
 	
-	void MultipleStatesTransition::RemoveState(shared_ptr<State> s)
+	void MultipleStatesTransition::RemoveTarget(shared_ptr<State> s)
 	{
-		mStates.erase(remove(mStates.begin(), mStates.end(), s), mStates.end());
+		mTargets.erase(remove(mTargets.begin(), mTargets.end(), s), mTargets.end());
 	}
 	
 	bool MultipleStatesTransition::IsTriggered()
 	{
 		if(Transition::IsTriggered())
 		{
-			mTarget = *select_randomly(mStates.begin(), mStates.end());
+			mTarget = *select_randomly(mTargets.begin(), mTargets.end());
 			return true;
 		}
 		return false;
