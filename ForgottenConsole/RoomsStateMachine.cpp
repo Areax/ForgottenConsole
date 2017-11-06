@@ -248,8 +248,6 @@ namespace Forgotten
 
 	shared_ptr<State> RoomsStateMachine::Update()
 	{
-		// keyword: rethink.  Should monster be updated first? If so chasing is very easy
-		// if not, character may run into position where the monster can 'see' him/her
 		if (currentState != NULL)
 		{
 			shared_ptr<State> newState = currentState->Update();

@@ -1,4 +1,5 @@
 #include "NarrationAction.h"
+#include "Blackboard.h"
 #include <fstream>
 #include <iostream>
 
@@ -26,6 +27,8 @@ namespace Forgotten
 		{
 			while (getline(f, line))
 			{
+				line = Blackboard::GetPlayer()->ModifyString(line);
+
 				cout << line << '\n';
 			}
 			f.close();

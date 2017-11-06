@@ -19,5 +19,6 @@ namespace Forgotten
 	private:
 		shared_ptr<RoomsStateMachine> playerSM;
 		shared_ptr<MonsterStateMachine> monsterSM;
+		shared_ptr<State> gameState;
 	};
 }

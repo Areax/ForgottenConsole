@@ -32,6 +32,7 @@ namespace Forgotten
 
 	void RoomState::SetExit()
 	{
+		//should be an action if anything
 		//cout << "Now leaving..." << endl;
 	}
 

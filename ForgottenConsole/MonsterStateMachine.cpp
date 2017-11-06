@@ -2,7 +2,7 @@
 #include <stdlib.h>  
 #include <time.h> 
 #include <iostream>
-#include "RoomsStateMachine.h"
+#include "MonsterStateMachine.h"
 #include "Transition.h"
 #include "CommandCondition.h"
 #include "MonsterRoomState.h"
@@ -14,9 +14,12 @@ using namespace std;
 
 namespace Forgotten
 {
+	int minimumLettersToLose = 1;
+	int diffulty = 2;
 
-	MonsterStateMachine::MonsterStateMachine()
+	MonsterStateMachine::MonsterStateMachine(shared_ptr<RoomsStateMachine> rms)
 	{
+		player = rms;
 	}
 
 	void MonsterStateMachine::Initialize()
@@ -65,7 +68,6 @@ namespace Forgotten
 		frontroomToLivingroom->SetCondition(west);
 		frontroomToPlayroom->SetCondition(north);
 		playroomToFrontroom->SetCondition(south);
-
 	}
 
 	shared_ptr<State> MonsterStateMachine::Update()
@@ -76,6 +78,20 @@ namespace Forgotten
 			monsterMove = rand() % 4;
 			MonsterMoves::SetMove(direction[monsterMove]);
 
+			// keyword: redo this because it should definitely be a condition
+			if (player->getCurrentState()->Name() == currentState->Name())
+			{
+				int numLettersLose = (rand() % diffulty) + 1 + minimumLettersToLose;
+				for (int i = 0; i < numLettersLose; i++)
+				{
+					Blackboard::GetPlayer()->LoseLetter(Blackboard::GetPlayer()->RandomAvailableConsonant());
+				}
+
+				// keyword: a to do to tell you you're attacking
+				cout << "you suck at this game" << endl;
+				return NULL;
+			}
+
 			shared_ptr<State> newState = currentState->Update();
 			if (newState != NULL)
 			{
@@ -85,7 +101,7 @@ namespace Forgotten
 			}
 		}
 
-		cout << "Meanwhile, the monster is currently in the " << currentState->Name() << '\n';
+		cout << "Meanwhile, the monster is currently in the " << currentState->Name() << endl;
 		return NULL;
 	}
 }

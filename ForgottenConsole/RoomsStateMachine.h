@@ -1,6 +1,5 @@
 #pragma once
 #include "StateMachine.h"
-#include "MonsterStateMachine.h"
 #include <memory>
 #include <map>
 
@@ -15,7 +14,6 @@ namespace Forgotten
 		virtual void Initialize();
 		virtual shared_ptr<State> Update();
 	private:
-		shared_ptr<MonsterStateMachine> monster;
 		vector<shared_ptr<State>> RoomStates = vector<shared_ptr<State>>();
 	};
 }

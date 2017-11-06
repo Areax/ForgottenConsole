@@ -148,6 +148,8 @@
     <ClInclude Include="Blackboard.h" />
     <ClInclude Include="CommandCondition.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="FinishedGameCondition.h" />
+    <ClInclude Include="InGameState.h" />
     <ClInclude Include="MonsterRoomState.h" />
     <ClInclude Include="MonsterCondition.h" />
     <ClInclude Include="MonsterMoves.h" />
@@ -156,7 +158,7 @@
     <ClInclude Include="MultipleStatesTransition.h" />
     <ClInclude Include="NarrationAction.h" />
     <ClInclude Include="OrCondition.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerWords.h" />
     <ClInclude Include="PlayingSM.h" />
     <ClInclude Include="RoomCondition.h" />
     <ClInclude Include="RoomsStateMachine.h" />
@@ -172,7 +174,9 @@
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Blackboard.cpp" />
     <ClCompile Include="CommandCondition.cpp" />
+    <ClCompile Include="FinishedGameCondition.cpp" />
     <ClCompile Include="ForgottenConsole.cpp" />
+    <ClCompile Include="InGameState.cpp" />
     <ClCompile Include="MonsterCondition.cpp" />
     <ClCompile Include="MonsterMoves.cpp" />
     <ClCompile Include="MonsterRoomState.cpp" />
@@ -181,7 +185,7 @@
     <ClCompile Include="MultipleStatesTransition.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
     <ClCompile Include="OrCondition.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerWords.cpp" />
     <ClCompile Include="PlayingSM.cpp" />
     <ClCompile Include="RoomCondition.cpp" />
     <ClCompile Include="RoomsStateMachine.cpp" />
