@@ -97,18 +97,8 @@ namespace Forgotten
 		RoomStates.push_back(bedroom);
 		RoomStates.push_back(kitchen);
 		RoomStates.push_back(guestroom);
-
 	
 		currentState = bedroom;
-
-		/*
-		monster = make_shared<MonsterStateMachine>(getCurrentState());
-		monster->Initialize();
-
-		srand((unsigned int)time(NULL));
-		int monsterStart = rand() % 3;
-		monster->setCurrentState(RoomStates[monsterStart]); //Randomly places a monster in a room that's not in computer room, kitchen, bedroom, or guestroom.
-		*/
 
 		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
@@ -130,41 +120,38 @@ namespace Forgotten
 		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
 		shared_ptr<Condition> win = make_shared<CommandCondition>("remember");
 
-		bedroomToComputerroom->SetCondition(northPlayer);
-		bedroomToBathroom->SetCondition(southPlayer);
-		bedroomToLivingroom->SetCondition(eastPlayer);
+		bedroomToComputerroom->SetCondition(north);
+		bedroomToBathroom->SetCondition(south);
+		bedroomToLivingroom->SetCondition(east);
 
-		computerroomToBedroom->SetCondition(southPlayer);
+		computerroomToBedroom->SetCondition(south);
 
-		bathroomToHallway->SetCondition(eastPlayer);
+		bathroomToHallway->SetCondition(east);
 
-		hallwayToBathroom->SetCondition(westPlayer);
-		hallwayToGuestroom->SetCondition(southPlayer);
+		hallwayToBathroom->SetCondition(west);
+		hallwayToGuestroom->SetCondition(south);
 		hallwayToLivingroom->SetCondition(north);
 
-		guestroomToHallmay->SetCondition(northPlayer);
+		guestroomToHallmay->SetCondition(north);
 		victory->SetCondition(win);
 
-		livingroomToKitchen->SetCondition(northPlayer);
-		livingroomToBedroom->SetCondition(westPlayer);
+		livingroomToKitchen->SetCondition(north);
+		livingroomToBedroom->SetCondition(west);
 		livingroomToHallway->SetCondition(south);
 		livingroomToFrontroom->SetCondition(east);
 
 		frontroomToLivingroom->SetCondition(west);
 		frontroomToPlayroom->SetCondition(north);
-		playroomToKitchen->SetCondition(westPlayer);
+		playroomToKitchen->SetCondition(west);
 		playroomToFrontroom->SetCondition(south);
 
-		kitchenToComputerroom->SetCondition(westPlayer);
+		kitchenToComputerroom->SetCondition(west);
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()
 	{
 		// keyword: rethink.  Should monster be updated first? If so chasing is very easy
 		// if not, character may run into position where the monster can 'see' him/her
-		
-		//monster->Update();
-
 		if (currentState != NULL)
 		{
 			shared_ptr<State> newState = currentState->Update();

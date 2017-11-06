@@ -27,8 +27,6 @@ namespace Forgotten
 		shared_ptr<State> frontroom = make_shared<MonsterRoomState>("frontroom");
 		shared_ptr<State> hallway = make_shared<MonsterRoomState>("hallway");
 
-
-		shared_ptr<Transition> hallwayToGuestroom = make_shared<Transition>(guestroom);
 		shared_ptr<Transition> hallwayToLivingroom = make_shared<Transition>(livingroom);
 		shared_ptr<Transition> livingroomToFrontroom = make_shared<Transition>(frontroom);
 		shared_ptr<Transition> livingroomToHallway = make_shared<Transition>(hallway);
@@ -36,8 +34,6 @@ namespace Forgotten
 		shared_ptr<Transition> frontroomToLivingroom = make_shared<Transition>(livingroom);
 		shared_ptr<Transition> playroomToFrontroom = make_shared<Transition>(hallway);
 
-
-		hallway->AddTransition(hallwayToGuestroom);
 		hallway->AddTransition(hallwayToLivingroom);
 		livingroom->AddTransition(livingroomToFrontroom);
 		livingroom->AddTransition(livingroomToHallway);
@@ -61,6 +57,7 @@ namespace Forgotten
 		shared_ptr<Condition> south = make_shared<MonsterCondition>("south");
 		shared_ptr<Condition> east = make_shared<MonsterCondition>("east");
 		shared_ptr<Condition> west = make_shared<MonsterCondition>("west");
+
 
 		hallwayToLivingroom->SetCondition(north);
 		livingroomToHallway->SetCondition(south);

@@ -19,7 +19,5 @@ namespace Forgotten
 	private:
 		shared_ptr<RoomsStateMachine> playerSM;
 		shared_ptr<MonsterStateMachine> monsterSM;
-		string direction[4] = { "north", "south", "east", "west" };
-		int monsterMove;
 	};
 }
