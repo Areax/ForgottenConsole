@@ -148,6 +148,7 @@
     <ClInclude Include="Blackboard.h" />
     <ClInclude Include="CommandCondition.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="MonsterRoomState.h" />
     <ClInclude Include="MonsterCondition.h" />
     <ClInclude Include="MonsterMoves.h" />
     <ClInclude Include="MonsterStateMachine.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Transition.h" />
+    <ClInclude Include="WhoseTurnCondition.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
@@ -172,6 +174,7 @@
     <ClCompile Include="ForgottenConsole.cpp" />
     <ClCompile Include="MonsterCondition.cpp" />
     <ClCompile Include="MonsterMoves.cpp" />
+    <ClCompile Include="MonsterRoomState.cpp" />
     <ClCompile Include="MonsterStateMachine.cpp" />
     <ClCompile Include="MultipleStatesTransition.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
@@ -184,6 +187,7 @@
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Transition.cpp" />
+    <ClCompile Include="WhoseTurnCondition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="book.txt" />

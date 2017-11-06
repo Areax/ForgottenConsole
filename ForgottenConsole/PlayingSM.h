@@ -15,5 +15,11 @@ namespace Forgotten
 		PlayingSM();
 		virtual void Initialize();
 		virtual shared_ptr<State> Update();
+
+	private:
+		shared_ptr<RoomsStateMachine> playerSM;
+		shared_ptr<MonsterStateMachine> monsterSM;
+		string direction[4] = { "north", "south", "east", "west" };
+		int monsterMove;
 	};
 }

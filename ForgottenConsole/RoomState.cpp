@@ -27,7 +27,7 @@ namespace Forgotten
 
 	void RoomState::Exit()
 	{
-		//cout << "Now leaving..." << endl;
+		Blackboard::SetTurn(Blackboard::Monster);
 	}
 
 	void RoomState::SetExit()

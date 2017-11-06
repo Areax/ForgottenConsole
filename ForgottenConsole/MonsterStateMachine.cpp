@@ -5,7 +5,7 @@
 #include "RoomsStateMachine.h"
 #include "Transition.h"
 #include "CommandCondition.h"
-#include "RoomState.h"
+#include "MonsterRoomState.h"
 #include "MonsterCondition.h"
 #include "MonsterMoves.h"
 #include "Blackboard.h"
@@ -21,11 +21,11 @@ namespace Forgotten
 
 	void MonsterStateMachine::Initialize()
 	{
-		shared_ptr<State> livingroom = make_shared<RoomState>("livingroom");
-		shared_ptr<State> playroom = make_shared<RoomState>("playroom");
-		shared_ptr<State> guestroom = make_shared<RoomState>("guestroom");
-		shared_ptr<State> frontroom = make_shared<RoomState>("frontroom");
-		shared_ptr<State> hallway = make_shared<RoomState>("hallway");
+		shared_ptr<State> livingroom = make_shared<MonsterRoomState>("livingroom");
+		shared_ptr<State> playroom = make_shared<MonsterRoomState>("playroom");
+		shared_ptr<State> guestroom = make_shared<MonsterRoomState>("guestroom");
+		shared_ptr<State> frontroom = make_shared<MonsterRoomState>("frontroom");
+		shared_ptr<State> hallway = make_shared<MonsterRoomState>("hallway");
 
 
 		shared_ptr<Transition> hallwayToGuestroom = make_shared<Transition>(guestroom);
@@ -54,9 +54,8 @@ namespace Forgotten
 		srand((unsigned int)time(NULL));
 		int monsterStart = rand() % 3;
 		currentState = RoomStates[monsterStart]; //Randomly places a monster in a room that's not in computer room, kitchen, bedroom, or guestroom.
-		
-		cout << currentState->Name() << '\n';
 
+		cout << "The monster started in: " << currentState->Name() << '\n';
 
 		shared_ptr<Condition> north = make_shared<MonsterCondition>("north");
 		shared_ptr<Condition> south = make_shared<MonsterCondition>("south");
@@ -74,25 +73,22 @@ namespace Forgotten
 
 	shared_ptr<State> MonsterStateMachine::Update()
 	{
-		Blackboard::SetTurn(Blackboard::Monster);
-		srand((unsigned int)time(NULL));
-		monsterMove = rand() % 4;
-		MonsterMoves::SetMove(direction[monsterMove]);
-
 		if (currentState != NULL)
 		{
-			shared_ptr<State> newState = currentState->Update();
-			cout << "Monster went from: " << currentState->Name() << '\n';
+			srand((unsigned int)time(NULL));
+			monsterMove = rand() % 4;
+			MonsterMoves::SetMove(direction[monsterMove]);
 
+			shared_ptr<State> newState = currentState->Update();
 			if (newState != NULL)
 			{
 				currentState->Exit();
 				currentState = newState;
 				currentState->Enter();
 			}
-
-			cout << "Monster went to: " << currentState->Name() << '\n';
 		}
+
+		cout << "Meanwhile, the monster is currently in the " << currentState->Name() << '\n';
 		return NULL;
 	}
 }

@@ -167,7 +167,6 @@ namespace Forgotten
 
 		if (currentState != NULL)
 		{
-			Blackboard::SetTurn(Blackboard::Player);
 			shared_ptr<State> newState = currentState->Update();
 
 			if (newState != NULL)

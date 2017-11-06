@@ -78,6 +78,12 @@
     <ClInclude Include="PlayingSM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MonsterRoomState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WhoseTurnCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ForgottenConsole.cpp">
@@ -132,6 +138,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayingSM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterRoomState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WhoseTurnCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
