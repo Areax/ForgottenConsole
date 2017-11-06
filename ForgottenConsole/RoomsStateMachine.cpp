@@ -2,6 +2,7 @@
 #include "RoomState.h"
 #include "RoomsStateMachine.h"
 #include "Transition.h"
+#include "MultipleStatesTransition.h"
 #include "CommandCondition.h"
 #include "MonsterCondition.h"
 #include "NarrationAction.h"
@@ -66,7 +67,61 @@ namespace Forgotten
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
 		shared_ptr<Transition> victory = make_shared<Transition>(winState);
 
+		MultipleStatesTransition bedroomLeavingRaw = MultipleStatesTransition();
+		bedroomLeavingRaw.AddState(computerroom);
+		bedroomLeavingRaw.AddState(bathroom);
+		bedroomLeavingRaw.AddState(livingroom);
+		shared_ptr<Transition> bedroomLeaving = make_shared<MultipleStatesTransition>(bedroomLeavingRaw);
+		bedroom->AddTransition(bedroomLeaving);
 
+		MultipleStatesTransition computerroomLeavingRaw = MultipleStatesTransition();
+		computerroomLeavingRaw.AddState(bedroom);
+		shared_ptr<Transition> computerroomLeaving = make_shared<MultipleStatesTransition>(computerroomLeavingRaw);
+		computerroom->AddTransition(computerroomLeaving);
+
+		MultipleStatesTransition bathroomLeavingRaw = MultipleStatesTransition();
+		bathroomLeavingRaw.AddState(hallway);
+		shared_ptr<Transition> bathroomLeaving = make_shared<MultipleStatesTransition>(bathroomLeavingRaw);
+		bathroom->AddTransition(bathroomLeaving);
+
+		MultipleStatesTransition hallwayLeavingRaw = MultipleStatesTransition();
+		hallwayLeavingRaw.AddState(bathroom);
+		hallwayLeavingRaw.AddState(guestroom);
+		hallwayLeavingRaw.AddState(livingroom);
+		shared_ptr<Transition> hallwayLeaving = make_shared<MultipleStatesTransition>(hallwayLeavingRaw);
+		hallway->AddTransition(hallwayLeaving);
+
+		MultipleStatesTransition guestroomLeavingRaw = MultipleStatesTransition();
+		guestroomLeavingRaw.AddState(computerroom);
+		shared_ptr<Transition> guestroomLeaving = make_shared<MultipleStatesTransition>(guestroomLeavingRaw);
+		guestroom->AddTransition(guestroomLeaving);
+
+		MultipleStatesTransition livingroomLeavingRaw = MultipleStatesTransition();
+		livingroomLeavingRaw.AddState(kitchen);
+		livingroomLeavingRaw.AddState(bedroom);
+		livingroomLeavingRaw.AddState(frontroom);
+		livingroomLeavingRaw.AddState(hallway);
+		shared_ptr<Transition> livingroomLeaving = make_shared<MultipleStatesTransition>(livingroomLeavingRaw);
+		livingroom->AddTransition(livingroomLeaving);
+
+		MultipleStatesTransition frontroomLeavingRaw = MultipleStatesTransition();
+		frontroomLeavingRaw.AddState(playroom);
+		frontroomLeavingRaw.AddState(livingroom);
+		shared_ptr<Transition> frontroomLeaving = make_shared<MultipleStatesTransition>(frontroomLeavingRaw);
+		frontroom->AddTransition(frontroomLeaving);
+
+		MultipleStatesTransition playroomLeavingRaw = MultipleStatesTransition();
+		playroomLeavingRaw.AddState(kitchen);
+		playroomLeavingRaw.AddState(frontroom);
+		shared_ptr<Transition> playroomLeaving = make_shared<MultipleStatesTransition>(playroomLeavingRaw);
+		playroom->AddTransition(playroomLeaving);
+
+		MultipleStatesTransition kitchenLeavingRaw = MultipleStatesTransition();
+		kitchenLeavingRaw.AddState(computerroom);
+		kitchenLeavingRaw.AddState(bathroom);
+		kitchenLeavingRaw.AddState(livingroom);
+		shared_ptr<Transition> kitchenLeaving = make_shared<MultipleStatesTransition>(kitchenLeavingRaw);
+		kitchen->AddTransition(kitchenLeaving);
 
 		bedroom->AddTransition(bedroomToComputerroom);
 		bedroom->AddTransition(bedroomToBathroom);
@@ -129,6 +184,16 @@ namespace Forgotten
 
 		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
 		shared_ptr<Condition> win = make_shared<CommandCondition>("remember");
+
+		bedroomLeaving->SetCondition(run);
+		computerroomLeaving->SetCondition(run);
+		bathroomLeaving->SetCondition(run);
+		hallwayLeaving->SetCondition(run);
+		guestroomLeaving->SetCondition(run);
+		livingroomLeaving->SetCondition(run);
+		frontroomLeaving->SetCondition(run);
+		playroomLeaving->SetCondition(run);
+		kitchenLeaving->SetCondition(run);
 
 		bedroomToComputerroom->SetCondition(northPlayer);
 		bedroomToBathroom->SetCondition(southPlayer);
