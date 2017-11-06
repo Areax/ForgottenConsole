@@ -84,6 +84,9 @@
     <ClInclude Include="WhoseTurnCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MultipleOrCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ForgottenConsole.cpp">
@@ -144,6 +147,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WhoseTurnCondition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MultipleOrCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

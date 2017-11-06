@@ -24,4 +24,4 @@
 ///////////////////
 ////////////FinnO/
 
-You're in the frontroom.
+You're in the frontroom.  You can go north to the playroom.

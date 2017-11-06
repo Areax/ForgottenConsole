@@ -18,4 +18,4 @@
  -'"'                   |______|_|_____________|_|_________________________
 
 
-You're in the hallway. You can go north to the living room, south to the hallway, east to the frontroom, or west to the bedroom.
+You're in the hallway. You can go north to the living room, south to the guestroom, or west to the bathroom.

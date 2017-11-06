@@ -152,6 +152,7 @@
     <ClInclude Include="MonsterCondition.h" />
     <ClInclude Include="MonsterMoves.h" />
     <ClInclude Include="MonsterStateMachine.h" />
+    <ClInclude Include="MultipleOrCondition.h" />
     <ClInclude Include="MultipleStatesTransition.h" />
     <ClInclude Include="NarrationAction.h" />
     <ClInclude Include="OrCondition.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="MonsterMoves.cpp" />
     <ClCompile Include="MonsterRoomState.cpp" />
     <ClCompile Include="MonsterStateMachine.cpp" />
+    <ClCompile Include="MultipleOrCondition.cpp" />
     <ClCompile Include="MultipleStatesTransition.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
     <ClCompile Include="OrCondition.cpp" />
