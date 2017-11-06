@@ -5,7 +5,6 @@
 #include "CommandCondition.h"
 #include "MonsterCondition.h"
 #include "NarrationAction.h"
-#include "NearCondition.h"
 #include "Blackboard.h"
 #include "RoomCondition.h"
 #include "MonsterStateMachine.h"
@@ -20,7 +19,6 @@ namespace Forgotten
 {
 	RoomsStateMachine::RoomsStateMachine()
 	{
-
 	}
 
 	void RoomsStateMachine::Initialize()
@@ -99,16 +97,18 @@ namespace Forgotten
 		RoomStates.push_back(bedroom);
 		RoomStates.push_back(kitchen);
 		RoomStates.push_back(guestroom);
+
 	
 		currentState = bedroom;
 
+		/*
 		monster = make_shared<MonsterStateMachine>(getCurrentState());
 		monster->Initialize();
 
 		srand((unsigned int)time(NULL));
 		int monsterStart = rand() % 3;
 		monster->setCurrentState(RoomStates[monsterStart]); //Randomly places a monster in a room that's not in computer room, kitchen, bedroom, or guestroom.
-
+		*/
 
 		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
@@ -163,7 +163,7 @@ namespace Forgotten
 		// keyword: rethink.  Should monster be updated first? If so chasing is very easy
 		// if not, character may run into position where the monster can 'see' him/her
 		
-		monster->Update();
+		//monster->Update();
 
 		if (currentState != NULL)
 		{

@@ -1,5 +1,6 @@
 #pragma once
 #include "StateMachine.h"
+#include "RoomsStateMachine.h"
 #include "MonsterStateMachine.h"
 #include <memory>
 #include <map>
@@ -8,14 +9,11 @@ using namespace std;
 
 namespace Forgotten
 {
-	class RoomsStateMachine : public StateMachine
+	class PlayingSM : public StateMachine
 	{
 	public:
-		RoomsStateMachine();
+		PlayingSM();
 		virtual void Initialize();
 		virtual shared_ptr<State> Update();
-	private:
-		shared_ptr<MonsterStateMachine> monster;
-		vector<shared_ptr<State>> RoomStates = vector<shared_ptr<State>>();
 	};
 }

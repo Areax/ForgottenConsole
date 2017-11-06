@@ -155,6 +155,7 @@
     <ClInclude Include="NarrationAction.h" />
     <ClInclude Include="OrCondition.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayingSM.h" />
     <ClInclude Include="RoomCondition.h" />
     <ClInclude Include="RoomsStateMachine.h" />
     <ClInclude Include="RoomState.h" />
@@ -174,10 +175,9 @@
     <ClCompile Include="MonsterStateMachine.cpp" />
     <ClCompile Include="MultipleStatesTransition.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
-    <ClCompile Include="NearCondition.cpp" />
-    <ClCompile Include="NearCondition.h" />
     <ClCompile Include="OrCondition.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayingSM.cpp" />
     <ClCompile Include="RoomCondition.cpp" />
     <ClCompile Include="RoomsStateMachine.cpp" />
     <ClCompile Include="RoomState.cpp" />
