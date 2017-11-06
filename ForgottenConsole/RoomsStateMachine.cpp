@@ -6,14 +6,11 @@
 #include "CommandCondition.h"
 #include "MonsterCondition.h"
 #include "NarrationAction.h"
-#include "NearCondition.h"
 #include "Blackboard.h"
 #include "RoomCondition.h"
 #include "MonsterStateMachine.h"
 #include "OrCondition.h"
 #include <iostream>
-#include <stdlib.h>  
-#include <time.h> 
 
 
 using namespace std;
@@ -22,7 +19,6 @@ namespace Forgotten
 {
 	RoomsStateMachine::RoomsStateMachine()
 	{
-
 	}
 
 	void RoomsStateMachine::Initialize()
@@ -158,14 +154,6 @@ namespace Forgotten
 	
 		currentState = bedroom;
 
-		monster = make_shared<MonsterStateMachine>(getCurrentState());
-		monster->Initialize();
-
-		srand((unsigned int)time(NULL));
-		int monsterStart = rand() % 3;
-		monster->setCurrentState(RoomStates[monsterStart]); //Randomly places a monster in a room that's not in computer room, kitchen, bedroom, or guestroom.
-
-
 		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
 		shared_ptr<Condition> flee = make_shared<CommandCondition>("flee");
@@ -210,20 +198,20 @@ namespace Forgotten
 
 		hallwayToBathroom->SetCondition(westPlayer);
 		hallwayToGuestroom->SetCondition(southPlayer);
-		hallwayToLivingroom->SetCondition(north);
+		hallwayToLivingroom->SetCondition(northPlayer);
 
 		guestroomToHallmay->SetCondition(northPlayer);
 		victory->SetCondition(win);
 
 		livingroomToKitchen->SetCondition(northPlayer);
 		livingroomToBedroom->SetCondition(westPlayer);
-		livingroomToHallway->SetCondition(south);
-		livingroomToFrontroom->SetCondition(east);
+		livingroomToHallway->SetCondition(southPlayer);
+		livingroomToFrontroom->SetCondition(eastPlayer);
 
-		frontroomToLivingroom->SetCondition(west);
-		frontroomToPlayroom->SetCondition(north);
+		frontroomToLivingroom->SetCondition(westPlayer);
+		frontroomToPlayroom->SetCondition(northPlayer);
 		playroomToKitchen->SetCondition(westPlayer);
-		playroomToFrontroom->SetCondition(south);
+		playroomToFrontroom->SetCondition(southPlayer);
 
 		kitchenToComputerroom->SetCondition(westPlayer);
 	}
@@ -232,12 +220,8 @@ namespace Forgotten
 	{
 		// keyword: rethink.  Should monster be updated first? If so chasing is very easy
 		// if not, character may run into position where the monster can 'see' him/her
-		
-		monster->Update();
-
 		if (currentState != NULL)
 		{
-			Blackboard::SetTurn(Blackboard::Player);
 			shared_ptr<State> newState = currentState->Update();
 
 			if (newState != NULL)

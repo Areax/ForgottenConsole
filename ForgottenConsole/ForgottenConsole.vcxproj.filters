@@ -75,6 +75,15 @@
     <ClInclude Include="RoomCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlayingSM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterRoomState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WhoseTurnCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ForgottenConsole.cpp">
@@ -128,10 +137,13 @@
     <ClCompile Include="RoomCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NearCondition.h">
-      <Filter>Header Files</Filter>
+    <ClCompile Include="PlayingSM.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NearCondition.cpp">
+    <ClCompile Include="MonsterRoomState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WhoseTurnCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

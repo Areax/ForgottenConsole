@@ -15,5 +15,9 @@ namespace Forgotten
 		PlayingSM();
 		virtual void Initialize();
 		virtual shared_ptr<State> Update();
+
+	private:
+		shared_ptr<RoomsStateMachine> playerSM;
+		shared_ptr<MonsterStateMachine> monsterSM;
 	};
 }
