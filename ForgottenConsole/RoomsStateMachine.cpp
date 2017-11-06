@@ -5,6 +5,7 @@
 #include "MultipleStatesTransition.h"
 #include "CommandCondition.h"
 #include "MonsterCondition.h"
+#include "OrCondition.h"
 #include "NarrationAction.h"
 #include "Blackboard.h"
 #include "RoomCondition.h"
@@ -21,13 +22,7 @@ namespace Forgotten
 	}
 
 	void RoomsStateMachine::Initialize()
-	{
-		// keyword: a lot of work lol.  Time to implement all of the south/west/north/east !!!
-		// then we'll need to add a state where, if the letter was lost, you're screwed.  Should be somewhere in the code
-		// in any case, basic text comes first
-		// trying currently to implement the following:
-		// run, flee, leave (randomly picks a Target to flee to, MultipleStateTransitions)
-		
+	{		
 		shared_ptr<State> bedroom = make_shared<RoomState>("bedroom");
 		shared_ptr<State> bathroom = make_shared<RoomState>("bathroom");
 		shared_ptr<State> livingroom = make_shared<RoomState>("livingroom");
@@ -155,7 +150,15 @@ namespace Forgotten
 		shared_ptr<Condition> leave = make_shared<CommandCondition>("leave");
 		shared_ptr<Condition> flee = make_shared<CommandCondition>("flee");
 
+		shared_ptr<MultipleOrCondition> leaveCommands = make_shared<MultipleOrCondition>();
+		leaveCommands->AddCondition(run);
+		leaveCommands->AddCondition(leave);
+		leaveCommands->AddCondition(flee);
+
+		shared_ptr<Condition> leaveRoom = leaveCommands;
+
 		// looking around comments
+
 		shared_ptr<Condition> look = make_shared<CommandCondition>("look");
 		shared_ptr<Condition> discover = make_shared<CommandCondition>("discover");
 		shared_ptr<Condition> notice = make_shared<CommandCondition>("notice");
@@ -165,13 +168,23 @@ namespace Forgotten
 		shared_ptr<Condition> find = make_shared<CommandCondition>("find");
 		shared_ptr<Condition> pickup = make_shared<CommandCondition>("pickup");
 
-		// win words
 		
+		// movement
 
 		shared_ptr<Condition> north = make_shared<CommandCondition>("north");
 		shared_ptr<Condition> south = make_shared<CommandCondition>("south");
 		shared_ptr<Condition> east = make_shared<CommandCondition>("east");
 		shared_ptr<Condition> west = make_shared<CommandCondition>("west");
+
+		shared_ptr<Condition> up = make_shared<CommandCondition>("up");
+		shared_ptr<Condition> down = make_shared<CommandCondition>("down");
+		shared_ptr<Condition> right = make_shared<CommandCondition>("right");
+		shared_ptr<Condition> left = make_shared<CommandCondition>("left");
+
+		shared_ptr<Condition> moveNorth = make_shared<OrCondition>(north, up);
+		shared_ptr<Condition> moveSouth = make_shared<OrCondition>(south, down);
+		shared_ptr<Condition> moveEast = make_shared<OrCondition>(east, right);
+		shared_ptr<Condition> moveWest = make_shared<OrCondition>(west, left);
 
 		// dictionary (prints out all words that we can use. HashMap maps word -> definition (definitions hidden until you lose more letters)
 		// win, lose, unlock, east, finish, leave, transcend, die, complete (finishes the game (only with key & in front room), but all have different text files. Neat right?)
@@ -179,6 +192,8 @@ namespace Forgotten
 		// advanced actions would probably include obscure words to utilize for more fun situations (less popular letters too like b,z,x,y,g,h,j,q,r,u,v,w)
 
 		shared_ptr<Condition> dictionary = make_shared<CommandCondition>("dictionary");
+
+		// win words
 
 		shared_ptr<Condition> win = make_shared<CommandCondition>("win");
 		shared_ptr<Condition> lose = make_shared<CommandCondition>("lose");
@@ -195,12 +210,6 @@ namespace Forgotten
 		shared_ptr<Condition> kill = make_shared<CommandCondition>("kill");
 		shared_ptr<Condition> deleteWord = make_shared<CommandCondition>("delete");
 
-		shared_ptr<MultipleOrCondition> leaveCommands = make_shared<MultipleOrCondition>();
-		leaveCommands->AddCondition(run);
-		leaveCommands->AddCondition(leave);
-		leaveCommands->AddCondition(flee);
-
-		shared_ptr<Condition> leaveRoom = leaveCommands;
 
 		bedroomLeaving->SetCondition(leaveRoom);
 		computerroomLeaving->SetCondition(leaveRoom);
@@ -212,38 +221,38 @@ namespace Forgotten
 		playroomLeaving->SetCondition(leaveRoom);
 		kitchenLeaving->SetCondition(leaveRoom);
 
-		bedroomToComputerroom->SetCondition(north);
-		bedroomToBathroom->SetCondition(south);
-		bedroomToLivingroom->SetCondition(east);
+		bedroomToComputerroom->SetCondition(moveNorth);
+		bedroomToBathroom->SetCondition(moveSouth);
+		bedroomToLivingroom->SetCondition(moveEast);
 
-		computerroomToBedroom->SetCondition(south);
+		computerroomToBedroom->SetCondition(moveSouth);
 
-		bathroomToHallway->SetCondition(east);
+		bathroomToHallway->SetCondition(moveEast);
 
-		hallwayToBathroom->SetCondition(west);
-		hallwayToGuestroom->SetCondition(south);
-		hallwayToLivingroom->SetCondition(north);
+		hallwayToBathroom->SetCondition(moveWest);
+		hallwayToGuestroom->SetCondition(moveSouth);
+		hallwayToLivingroom->SetCondition(moveNorth);
 
-		guestroomToHallmay->SetCondition(north);
+		guestroomToHallmay->SetCondition(moveNorth);
 		victory->SetCondition(win);
 
-		livingroomToKitchen->SetCondition(north);
-		livingroomToBedroom->SetCondition(west);
-		livingroomToHallway->SetCondition(south);
-		livingroomToFrontroom->SetCondition(east);
+		livingroomToKitchen->SetCondition(moveNorth);
+		livingroomToBedroom->SetCondition(moveWest);
+		livingroomToHallway->SetCondition(moveSouth);
+		livingroomToFrontroom->SetCondition(moveEast);
 
 		//currently impossible.
 		//livingroomToComputerroom->SetCondition();
 
-		frontroomToLivingroom->SetCondition(west);
-		frontroomToPlayroom->SetCondition(north);
+		frontroomToLivingroom->SetCondition(moveWest);
+		frontroomToPlayroom->SetCondition(moveNorth);
 		
-		playroomToKitchen->SetCondition(west);
+		playroomToKitchen->SetCondition(moveWest);
 		//definitely not south, different condition (secret)
-		playroomToHallway->SetCondition(south);
+		playroomToHallway->SetCondition(moveSouth);
 
 		//this is forced.
-		kitchenToComputerroom->SetCondition(west);
+		kitchenToComputerroom->SetCondition(moveWest);
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()
