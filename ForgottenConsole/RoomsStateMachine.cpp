@@ -10,6 +10,8 @@
 #include "Blackboard.h"
 #include "RoomCondition.h"
 #include "MultipleOrCondition.h"
+#include "FindMonsterAction.h"
+#include "ConditionalAction.h"
 #include <iostream>
 
 
@@ -187,13 +189,6 @@ namespace Forgotten
 		shared_ptr<Condition> kill = make_shared<CommandCondition>("kill");
 		shared_ptr<Condition> deleteWord = make_shared<CommandCondition>("delete");
 
-		// looking around comments
-
-		shared_ptr<Condition> look = make_shared<CommandCondition>("look");
-		shared_ptr<Condition> discover = make_shared<CommandCondition>("discover");
-		shared_ptr<Condition> notice = make_shared<CommandCondition>("notice");
-		shared_ptr<Condition> search = make_shared<CommandCondition>("search");
-
 		// pick up
 		shared_ptr<Condition> find = make_shared<CommandCondition>("find");
 		shared_ptr<Condition> pickup = make_shared<CommandCondition>("pickup");
@@ -216,6 +211,29 @@ namespace Forgotten
 		winWords->AddCondition(finish);
 		winWords->AddCondition(door);
 		winWords->AddCondition(complete);
+
+		// looking around comments
+
+		shared_ptr<Condition> look = make_shared<CommandCondition>("look");
+		shared_ptr<Condition> discover = make_shared<CommandCondition>("discover");
+		shared_ptr<Condition> notice = make_shared<CommandCondition>("notice");
+		shared_ptr<Condition> search = make_shared<CommandCondition>("search");
+		shared_ptr<Condition> listen = make_shared<CommandCondition>("listen");
+		shared_ptr<Condition> hear = make_shared<CommandCondition>("hear");
+
+		shared_ptr<MultipleOrCondition> lookWords = make_shared<MultipleOrCondition>();
+		lookWords->AddCondition(look);
+		lookWords->AddCondition(discover);
+		lookWords->AddCondition(notice);
+		lookWords->AddCondition(search);
+		lookWords->AddCondition(listen);
+		lookWords->AddCondition(hear);
+		shared_ptr<Condition> discoverWords = lookWords;
+
+		shared_ptr<Action> findMonster = make_shared<FindMonsterAction>();
+
+
+		discoverTheMonster = make_shared<ConditionalAction>("discoverTheMonster", discoverWords, findMonster);
 
 
 		bedroomLeaving->SetCondition(leaveRoom);
@@ -256,17 +274,20 @@ namespace Forgotten
 		victory->SetCondition(winWords);
 		
 		playroomToKitchen->SetCondition(moveWest);
+
 		//definitely not south, different condition (secret)
 		playroomToHallway->SetCondition(moveSouth);
 
 		//this is forced.
 		kitchenToComputerroom->SetCondition(moveWest);
+
 	}
 
 	shared_ptr<State> RoomsStateMachine::Update()
 	{
 		if (currentState != NULL)
 		{
+			Tick();
 			shared_ptr<State> newState = currentState->Update();
 
 			if (newState != NULL)
@@ -278,5 +299,10 @@ namespace Forgotten
 			}
 		}
 		return NULL;
+	}
+
+	void RoomsStateMachine::Tick()
+	{
+		discoverTheMonster->operator()();
 	}
 }

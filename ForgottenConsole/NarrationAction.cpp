@@ -18,7 +18,6 @@ namespace Forgotten
 
 	void NarrationAction::operator()()
 	{
-		//string filename = getFilename("beginning");
 		string filename = getFilename(mName);
 		string line;
 		ifstream f(filename);

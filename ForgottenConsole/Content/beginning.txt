@@ -27,11 +27,13 @@ To the north is a computer room, to the south bathroom, and to the east, a livin
 
 If you wish at any point to go to sleep and never wake up again, type exit.
 
-Movement:
+```Movement:
 north / up
 south / down
 east / right
 west / left
 run / leave / flee
-To complete the game:
+```Find the monster's whereabouts:
+look / discover / notice / search / listen / hear
+```To complete the game:
 win / door / quit / finish / complete / ?

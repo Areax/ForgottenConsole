@@ -108,6 +108,12 @@
     <ClInclude Include="SameStateCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ConditionalAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FindMonsterAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ForgottenConsole.cpp">
@@ -192,6 +198,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SameStateCondition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConditionalAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FindMonsterAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

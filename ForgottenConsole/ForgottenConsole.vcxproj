@@ -148,6 +148,8 @@
     <ClInclude Include="Blackboard.h" />
     <ClInclude Include="CommandCondition.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="ConditionalAction.h" />
+    <ClInclude Include="FindMonsterAction.h" />
     <ClInclude Include="FinishedGameCondition.h" />
     <ClInclude Include="SameStateCondition.h" />
     <ClInclude Include="InGameState.h" />
@@ -179,6 +181,8 @@
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Blackboard.cpp" />
     <ClCompile Include="CommandCondition.cpp" />
+    <ClCompile Include="ConditionalAction.cpp" />
+    <ClCompile Include="FindMonsterAction.cpp" />
     <ClCompile Include="SameStateCondition.cpp" />
     <ClCompile Include="FinishedGameCondition.cpp" />
     <ClCompile Include="ForgottenConsole.cpp" />

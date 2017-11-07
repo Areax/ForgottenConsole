@@ -18,4 +18,4 @@
      :;;;;;;;;;;;;;;;;;;;;:
       '::::::::::::::::::'
 
-You're in the guestroom.  You con go north to the hallway.
+You're in the guestroom.  You can go north to the hallway.

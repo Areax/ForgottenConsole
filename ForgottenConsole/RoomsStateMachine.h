@@ -13,7 +13,9 @@ namespace Forgotten
 		RoomsStateMachine();
 		virtual void Initialize();
 		virtual shared_ptr<State> Update();
+		void Tick();
 	private:
 		vector<shared_ptr<State>> RoomStates = vector<shared_ptr<State>>();
+		shared_ptr<Action> discoverTheMonster;
 	};
 }

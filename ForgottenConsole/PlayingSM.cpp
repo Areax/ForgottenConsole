@@ -46,9 +46,6 @@ namespace Forgotten
 
 	}
 
-	// keyword: states !!! where are the states lol
-	// why do we need whoseTurn?
-
 	shared_ptr<State> PlayingSM::Update()
 	{
 		playerSM->Update();
