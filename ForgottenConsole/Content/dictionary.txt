@@ -5,4 +5,4 @@ east / right
 west / left
 run / leave / flee
 End Game:
-win
+win / ?

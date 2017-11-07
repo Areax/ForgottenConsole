@@ -78,9 +78,6 @@
     <ClInclude Include="MonsterRoomState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WhoseTurnCondition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MultipleOrCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -91,6 +88,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FinishedGameCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterActionState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterActionStateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NotCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterAttackAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterWanderAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SameStateCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -149,9 +164,6 @@
     <ClCompile Include="MonsterRoomState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WhoseTurnCondition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MultipleOrCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -162,6 +174,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FinishedGameCondition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterActionState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterActionStateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NotCondition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterAttackAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterWanderAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SameStateCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

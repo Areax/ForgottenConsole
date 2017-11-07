@@ -14,9 +14,6 @@ using namespace std;
 
 namespace Forgotten
 {
-	int minimumLettersToLose = 1;
-	int diffulty = 2;
-
 	MonsterStateMachine::MonsterStateMachine(shared_ptr<RoomsStateMachine> rms)
 	{
 		player = rms;
@@ -53,6 +50,7 @@ namespace Forgotten
 		srand((unsigned int)time(NULL));
 		int monsterStart = rand() % 3;
 		currentState = RoomStates[monsterStart]; //Randomly places a monster in a room that's not in computer room, kitchen, bedroom, or guestroom.
+		Blackboard::SetMonsterState(currentState);
 
 		cout << "The monster started in: " << currentState->Name() << '\n';
 
@@ -68,29 +66,19 @@ namespace Forgotten
 		frontroomToLivingroom->SetCondition(west);
 		frontroomToPlayroom->SetCondition(north);
 		playroomToFrontroom->SetCondition(south);
+
+		monsterActionSM = make_shared<MonsterActionStateMachine>(player);
+		monsterActionSM->Initialize();
+
 	}
 
 	shared_ptr<State> MonsterStateMachine::Update()
 	{
+		monsterActionSM->Update();
+
 		if (currentState != NULL)
 		{
-			srand((unsigned int)time(NULL));
-			monsterMove = rand() % 4;
-			MonsterMoves::SetMove(direction[monsterMove]);
-
-			// keyword: redo this because it should definitely be a condition
-			if (player->getCurrentState()->Name() == currentState->Name())
-			{
-				int numLettersLose = (rand() % diffulty) + 1 + minimumLettersToLose;
-				for (int i = 0; i < numLettersLose; i++)
-				{
-					Blackboard::GetPlayer()->LoseLetter(Blackboard::GetPlayer()->RandomAvailableConsonant());
-				}
-
-				// keyword: a to do to tell you you're attacking
-				cout << "you suck at this game" << endl;
-				return NULL;
-			}
+			Tick();
 
 			shared_ptr<State> newState = currentState->Update();
 			if (newState != NULL)
@@ -98,10 +86,15 @@ namespace Forgotten
 				currentState->Exit();
 				currentState = newState;
 				currentState->Enter();
+				Blackboard::SetMonsterState(currentState);
 			}
 		}
-
-		cout << "Meanwhile, the monster is currently in the " << currentState->Name() << endl;
 		return NULL;
+		
+	}
+
+	void MonsterStateMachine::Tick()
+	{
+		//cout << "The monster's current whereabouts : " << currentState->Name() << endl;
 	}
 }

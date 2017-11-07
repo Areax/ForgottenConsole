@@ -1,26 +1,28 @@
 #pragma once
 #include <memory>
 #include <string>
-#include "State.h"
 #include "PlayerWords.h"
 
 using namespace std;
 
 namespace Forgotten
 {
+	class State;
+
 	class Blackboard
 	{
 	public:
-		enum Turn { Player, Monster };
-
 		static void SetCommand(string command);
 		static string GetCommand();
-		static void SetTurn(Turn turn);
-		static Turn GetTurn();
+		static void SetMonsterState(shared_ptr<State> state);
+		static shared_ptr<State> GetMonsterState();
+		static void SetPlayerState(shared_ptr<State> state);
+		static shared_ptr<State> GetPlayerState();
 		static shared_ptr<PlayerWords> GetPlayer();
 	private:
 		static string currentCommand;
-		static Blackboard::Turn currentTurn;
+		static shared_ptr<State> monsterState;
+		static shared_ptr<State> playerState;
 		static shared_ptr<PlayerWords> player;
 
 

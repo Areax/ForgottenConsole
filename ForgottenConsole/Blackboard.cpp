@@ -5,8 +5,9 @@
 namespace Forgotten
 {
 	string Blackboard::currentCommand = "";
-	Blackboard::Turn Blackboard::currentTurn = Blackboard::Player;
 	shared_ptr<PlayerWords> Blackboard::player = make_shared<PlayerWords>();
+	shared_ptr<State> Blackboard::monsterState = NULL;
+	shared_ptr<State> Blackboard::playerState = NULL;
 
 	Blackboard::Blackboard()
 	{
@@ -22,18 +23,28 @@ namespace Forgotten
 		return currentCommand;
 	}
 
-	void Blackboard::SetTurn(Turn turn)
-	{
-		currentTurn = turn;
-	}
-
 	shared_ptr<PlayerWords> Blackboard::GetPlayer()
 	{
 		return player;
 	}
 
-	Blackboard::Turn Blackboard::GetTurn()
+	void Blackboard::SetPlayerState(shared_ptr<State> state)
 	{
-		return currentTurn;
+		playerState = state;
+	}
+
+	shared_ptr<State> Blackboard::GetPlayerState()
+	{
+		return playerState;
+	}
+
+	void Blackboard::SetMonsterState(shared_ptr<State> state)
+	{
+		monsterState = state;
+	}
+
+	shared_ptr<State> Blackboard::GetMonsterState()
+	{
+		return monsterState;
 	}
 }

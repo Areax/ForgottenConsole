@@ -1,1 +1,12 @@
-Blah blah blah, type exit to leave.
+You awake in a dream. Type exit to leave.
+A jist of how the game is played:
+Movement:
+north / up
+south / down
+east / right
+west / left
+run / leave / flee
+End Game:
+win
+
+Enjoy!

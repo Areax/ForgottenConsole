@@ -10,7 +10,6 @@ namespace Forgotten
 {
 	bool FinishedGameCondition::operator()()
 	{
-		cout << (Blackboard::GetPlayer()->RandomAvailableConsonant() == NULL);
 		return Blackboard::GetPlayer()->RandomAvailableConsonant() == NULL;
 	};
 }

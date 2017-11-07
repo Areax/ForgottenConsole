@@ -149,14 +149,20 @@
     <ClInclude Include="CommandCondition.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="FinishedGameCondition.h" />
+    <ClInclude Include="SameStateCondition.h" />
     <ClInclude Include="InGameState.h" />
+    <ClInclude Include="MonsterActionState.h" />
+    <ClInclude Include="MonsterActionStateMachine.h" />
+    <ClInclude Include="MonsterAttackAction.h" />
     <ClInclude Include="MonsterRoomState.h" />
     <ClInclude Include="MonsterCondition.h" />
     <ClInclude Include="MonsterMoves.h" />
     <ClInclude Include="MonsterStateMachine.h" />
+    <ClInclude Include="MonsterWanderAction.h" />
     <ClInclude Include="MultipleOrCondition.h" />
     <ClInclude Include="MultipleStatesTransition.h" />
     <ClInclude Include="NarrationAction.h" />
+    <ClInclude Include="NotCondition.h" />
     <ClInclude Include="OrCondition.h" />
     <ClInclude Include="PlayerWords.h" />
     <ClInclude Include="PlayingSM.h" />
@@ -168,22 +174,27 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Transition.h" />
-    <ClInclude Include="WhoseTurnCondition.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Blackboard.cpp" />
     <ClCompile Include="CommandCondition.cpp" />
+    <ClCompile Include="SameStateCondition.cpp" />
     <ClCompile Include="FinishedGameCondition.cpp" />
     <ClCompile Include="ForgottenConsole.cpp" />
     <ClCompile Include="InGameState.cpp" />
+    <ClCompile Include="MonsterActionState.cpp" />
+    <ClCompile Include="MonsterActionStateMachine.cpp" />
+    <ClCompile Include="MonsterAttackAction.cpp" />
     <ClCompile Include="MonsterCondition.cpp" />
     <ClCompile Include="MonsterMoves.cpp" />
     <ClCompile Include="MonsterRoomState.cpp" />
     <ClCompile Include="MonsterStateMachine.cpp" />
+    <ClCompile Include="MonsterWanderAction.cpp" />
     <ClCompile Include="MultipleOrCondition.cpp" />
     <ClCompile Include="MultipleStatesTransition.cpp" />
     <ClCompile Include="NarrationAction.cpp" />
+    <ClCompile Include="NotCondition.cpp" />
     <ClCompile Include="OrCondition.cpp" />
     <ClCompile Include="PlayerWords.cpp" />
     <ClCompile Include="PlayingSM.cpp" />
@@ -193,7 +204,6 @@
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Transition.cpp" />
-    <ClCompile Include="WhoseTurnCondition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="book.txt" />

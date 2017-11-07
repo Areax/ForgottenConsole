@@ -144,6 +144,7 @@ namespace Forgotten
 		RoomStates.push_back(guestroom);
 	
 		currentState = bedroom;
+		Blackboard::SetPlayerState(currentState);
 
 		// movement commands
 		shared_ptr<Condition> run = make_shared<CommandCondition>("run");
@@ -266,6 +267,7 @@ namespace Forgotten
 				currentState->Exit();
 				currentState = newState;
 				currentState->Enter();
+				Blackboard::SetPlayerState(currentState);
 			}
 		}
 		return NULL;

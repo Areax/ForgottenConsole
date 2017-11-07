@@ -20,14 +20,11 @@ namespace Forgotten
 
 	void RoomState::SetEnter(string textfile)
 	{
-		// keyword: check. not going to lie may be gross.  Should be some kind of condition here I suppose
-		if(Blackboard::GetTurn() == Blackboard::Player)
-			narrateEnter = NarrationAction(mName);
+		narrateEnter = NarrationAction(mName);
 	}
 
 	void RoomState::Exit()
 	{
-		Blackboard::SetTurn(Blackboard::Monster);
 	}
 
 	void RoomState::SetExit()

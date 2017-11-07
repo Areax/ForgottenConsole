@@ -2,7 +2,6 @@
 #include "PlayingSM.h"
 #include "Transition.h"
 #include "CommandCondition.h"
-#include "WhoseTurnCondition.h"
 #include "FinishedGameCondition.h"
 #include "Blackboard.h"
 #include "MonsterMoves.h"

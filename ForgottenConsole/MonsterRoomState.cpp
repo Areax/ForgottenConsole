@@ -23,7 +23,6 @@ namespace Forgotten
 
 	void MonsterRoomState::Exit()
 	{
-		Blackboard::SetTurn(Blackboard::Player);
 	}
 
 	void MonsterRoomState::SetExit()

@@ -18,8 +18,6 @@ namespace Forgotten
 
 	void InGameState::Exit()
 	{
-		//should also be an action
-		cout << "GAME OVER";
 	}
 
 	shared_ptr<State> InGameState::Update()
