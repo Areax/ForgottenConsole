@@ -133,6 +133,7 @@ namespace Forgotten
 		livingroom->AddTransition(livingroomToHallway);
 		frontroom->AddTransition(frontroomToPlayroom);
 		frontroom->AddTransition(frontroomToLivingroom);
+		frontroom->AddTransition(victory);
 		playroom->AddTransition(playroomToKitchen);
 		playroom->AddTransition(playroomToHallway);
 		kitchen->AddTransition(kitchenToComputerroom);
@@ -166,7 +167,6 @@ namespace Forgotten
 		shared_ptr<Condition> pickup = make_shared<CommandCondition>("pickup");
 
 		// win words
-		
 
 		shared_ptr<Condition> north = make_shared<CommandCondition>("north");
 		shared_ptr<Condition> south = make_shared<CommandCondition>("south");
@@ -184,6 +184,7 @@ namespace Forgotten
 		shared_ptr<Condition> lose = make_shared<CommandCondition>("lose");
 		shared_ptr<Condition> finish = make_shared<CommandCondition>("finish");
 		shared_ptr<Condition> transcend = make_shared<CommandCondition>("transcend");
+		shared_ptr<Condition> door = make_shared<CommandCondition>("door");
 		//shared_ptr<Condition> die = make_shared<MonsterCondition>("die");
 		//shared_ptr<Condition> quit = make_shared<MonsterCondition>("quit");
 		//shared_ptr<Condition> complete = make_shared<MonsterCondition>("complete");
@@ -237,6 +238,7 @@ namespace Forgotten
 
 		frontroomToLivingroom->SetCondition(west);
 		frontroomToPlayroom->SetCondition(north);
+		victory->SetCondition(door);
 		
 		playroomToKitchen->SetCondition(west);
 		//definitely not south, different condition (secret)
