@@ -114,6 +114,9 @@
     <ClInclude Include="FindMonsterAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DieAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ForgottenConsole.cpp">
@@ -206,6 +209,9 @@
     <ClCompile Include="FindMonsterAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DieAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Content\beginning.txt">
@@ -248,6 +254,9 @@
       <Filter>Content</Filter>
     </Text>
     <Text Include="remember.txt">
+      <Filter>Content</Filter>
+    </Text>
+    <Text Include="Content\death.txt">
       <Filter>Content</Filter>
     </Text>
   </ItemGroup>

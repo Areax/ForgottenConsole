@@ -149,6 +149,7 @@
     <ClInclude Include="CommandCondition.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="ConditionalAction.h" />
+    <ClInclude Include="DieAction.h" />
     <ClInclude Include="FindMonsterAction.h" />
     <ClInclude Include="FinishedGameCondition.h" />
     <ClInclude Include="SameStateCondition.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="Blackboard.cpp" />
     <ClCompile Include="CommandCondition.cpp" />
     <ClCompile Include="ConditionalAction.cpp" />
+    <ClCompile Include="DieAction.cpp" />
     <ClCompile Include="FindMonsterAction.cpp" />
     <ClCompile Include="SameStateCondition.cpp" />
     <ClCompile Include="FinishedGameCondition.cpp" />
@@ -211,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="book.txt" />
+    <Text Include="Content\death.txt" />
     <Text Include="Content\bathroom.txt" />
     <Text Include="Content\bedroom.txt" />
     <Text Include="Content\beginning.txt" />

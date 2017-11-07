@@ -17,5 +17,6 @@ namespace Forgotten
 	private:
 		vector<shared_ptr<State>> RoomStates = vector<shared_ptr<State>>();
 		shared_ptr<Action> discoverTheMonster;
+		shared_ptr<Action> die;
 	};
 }

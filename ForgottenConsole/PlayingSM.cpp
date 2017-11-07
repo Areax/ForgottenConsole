@@ -43,6 +43,15 @@ namespace Forgotten
 		playing->AddTransition(playToGameOver);
 		playing->SetExit(loseText);
 
+		/*
+		shared_ptr<State> selfDeath = make_shared<InGameState>("death");
+		shared_ptr<Transition> toDeath = make_shared<Transition>(selfDeath);
+		shared_ptr<Action> deathText = make_shared<NarrationAction>("death");
+		shared_ptr<Condition> dyingCondition = make_shared<CommandCondition>("aeiou");
+		toDeath->SetCondition(dyingCondition);
+		selfDeath->SetEnter(deathText);
+		playing->AddTransition(toDeath);
+		*/
 
 
 		gameState = playing;

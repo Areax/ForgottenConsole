@@ -12,6 +12,7 @@
 #include "MultipleOrCondition.h"
 #include "FindMonsterAction.h"
 #include "ConditionalAction.h"
+#include "DieAction.h"
 #include <iostream>
 
 
@@ -238,6 +239,9 @@ namespace Forgotten
 
 		discoverTheMonster = make_shared<ConditionalAction>("discoverTheMonster", discoverWords, findMonster);
 
+		shared_ptr<Condition> dieCondition = make_shared<CommandCondition>("!");
+		shared_ptr<Action> dieAction = make_shared<DieAction>();
+		die = make_shared<ConditionalAction>("die", dieCondition, dieAction);
 
 		bedroomLeaving->SetCondition(leaveRoom);
 		computerroomLeaving->SetCondition(leaveRoom);
@@ -307,6 +311,8 @@ namespace Forgotten
 
 	void RoomsStateMachine::Tick()
 	{
+		// questional actions
 		discoverTheMonster->operator()();
+		die->operator()();
 	}
 }

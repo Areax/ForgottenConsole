@@ -35,5 +35,7 @@ west / left
 run / leave / flee
 ```Find the monster's whereabouts:
 look / discover / notice / search / listen / hear
+```To commit alphabet sudoku
+! (exclamation point)
 ```To complete the game:
 win / door / quit / finish / complete / ?
