@@ -15,7 +15,5 @@ namespace Forgotten
 		virtual void Enter() override;
 		virtual void Exit() override;
 		virtual shared_ptr<State> Update() override;
-	private:
-		NarrationAction exitAction;
 	};
 }

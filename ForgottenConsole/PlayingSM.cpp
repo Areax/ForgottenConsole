@@ -37,9 +37,12 @@ namespace Forgotten
 		shared_ptr<State> gameOver = make_shared<InGameState>("gameOver");
 		shared_ptr<Transition> playToGameOver = make_shared<Transition>(gameOver);
 		shared_ptr<Condition> losingCondition = make_shared<FinishedGameCondition>();
+		shared_ptr<Action> loseText = make_shared<NarrationAction>("loser");
 
 		playToGameOver->SetCondition(losingCondition);
 		playing->AddTransition(playToGameOver);
+		playing->SetExit(loseText);
+
 
 
 		gameState = playing;

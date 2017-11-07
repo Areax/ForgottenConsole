@@ -18,6 +18,8 @@ namespace Forgotten
 
 	void InGameState::Exit()
 	{
+		if (mExit != nullptr)
+			mExit->operator()();
 	}
 
 	shared_ptr<State> InGameState::Update()
