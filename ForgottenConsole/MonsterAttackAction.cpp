@@ -8,7 +8,7 @@ using namespace std;
 namespace Forgotten
 {
 	int minimumLettersToLose = 1;
-	int diffulty = 2;
+	int diffulty = 1;
 
 	MonsterAttackAction::MonsterAttackAction()
 	{

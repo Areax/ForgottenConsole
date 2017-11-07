@@ -52,8 +52,6 @@ namespace Forgotten
 		currentState = RoomStates[monsterStart]; //Randomly places a monster in a room that's not in computer room, kitchen, bedroom, or guestroom.
 		Blackboard::SetMonsterState(currentState);
 
-		cout << "The monster started in: " << currentState->Name() << '\n';
-
 		shared_ptr<Condition> north = make_shared<MonsterCondition>("north");
 		shared_ptr<Condition> south = make_shared<MonsterCondition>("south");
 		shared_ptr<Condition> east = make_shared<MonsterCondition>("east");
