@@ -35,6 +35,7 @@ namespace Forgotten
 		shared_ptr<State> hallway = make_shared<RoomState>("hallway");
 		shared_ptr<State> computerroom = make_shared<RoomState>("computerroom");
 		shared_ptr<State> winState = make_shared<RoomState>("victory");
+		shared_ptr<State> trueWinState = make_shared<RoomState>("remember");
 
 		shared_ptr<Transition> bedroomToComputerroom = make_shared<Transition>(computerroom);
 		shared_ptr<Transition> bedroomToBathroom = make_shared<Transition>(bathroom);
@@ -56,6 +57,7 @@ namespace Forgotten
 		shared_ptr<Transition> playroomToHallway = make_shared<Transition>(hallway);
 		shared_ptr<Transition> kitchenToComputerroom = make_shared<Transition>(computerroom);
 		shared_ptr<Transition> victory = make_shared<Transition>(winState);
+		shared_ptr<Transition> trueVictory = make_shared<Transition>(trueWinState);
 
 		MultipleStatesTransition bedroomLeavingRaw = MultipleStatesTransition();
 		bedroomLeavingRaw.AddTarget(computerroom);
@@ -116,6 +118,7 @@ namespace Forgotten
 		bedroom->AddTransition(bedroomToComputerroom);
 		bedroom->AddTransition(bedroomToBathroom);
 		bedroom->AddTransition(bedroomToLivingroom);
+		bedroom->AddTransition(trueVictory);
 		computerroom->AddTransition(computerroomToBedroom);
 		bathroom->AddTransition(bathroomToHallway); 
 		hallway->AddTransition(hallwayToBathroom);
@@ -249,6 +252,7 @@ namespace Forgotten
 		bedroomToComputerroom->SetCondition(moveNorth);
 		bedroomToBathroom->SetCondition(moveSouth);
 		bedroomToLivingroom->SetCondition(moveEast);
+		trueVictory->SetCondition(remember);
 
 		computerroomToBedroom->SetCondition(moveSouth);
 

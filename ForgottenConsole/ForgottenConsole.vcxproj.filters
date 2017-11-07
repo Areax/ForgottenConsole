@@ -247,5 +247,8 @@
     <Text Include="Content\loser.txt">
       <Filter>Content</Filter>
     </Text>
+    <Text Include="remember.txt">
+      <Filter>Content</Filter>
+    </Text>
   </ItemGroup>
 </Project>
