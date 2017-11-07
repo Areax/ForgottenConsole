@@ -1,12 +1,37 @@
-You awake in a dream. Type exit to leave.
-A jist of how the game is played:
+o(=(=(=(=)=)=)=)o
+ !!!!!!}!{!!!!!!                                                ___ 
+ !!!!!} | {!!!!!                                               /   \
+ !!!!}  |  {!!!!     _!_     ()              ()     _!_       | //  |
+ !!!'   |   '!!!    |~@~|    ||______________||    |~@~|      |     |
+ ~@~----+----~@~    |___|    |                |    |___|       \___/
+ !!!    |    !!!      |      |      ~@@~      |      |       _________
+ !!!    |    !!!     ( )     |_______  _______|     ( )     |____-____|
+ !!!____|____!!!  __(___)__  {__~@~__}{__~@~__}  __(___)__  |____-____|
+ !!!=========!!!   |__-__|   %%%%%%%%%%%%%%%%%%   |__-__|   |____-____|
+_!!!_________!!!___|_____|_ %%%%%%%%%%%%%%%%%%%% _|_____|___|____-____|_
+                   |     | %%%%%%%%%%%%%%%%%%%%%% |     |   |/       \|
+                          %%%%%%%%%%%%%%%%%%%%%%%%
+                         %%%%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                       /!!!!!!!!!!!!!!!!!!!!!!!!!!!!\
+                       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
+                       !!!!!!!!!!!!!!!!!!!!!!!!!!lc!!
+                       `======~@~==========~@~======`
+                      `==============================`
+                     `====~@~==================~@~====`
+                    `==================================`
+                   `==~@~==========================~@~==`
+
+You wake up to find yourself in a bedroom... but you're not sure how you got here in the first place.
+To the north is a computer room, to the south bathroom, and to the east, a living room.
+
+If you wish at any point to go to sleep and never wake up again, type exit.
+
 Movement:
 north / up
 south / down
 east / right
 west / left
 run / leave / flee
-End Game:
-win
-
-Enjoy!
+To complete the game:
+win / door / quit / finish / complete / ?

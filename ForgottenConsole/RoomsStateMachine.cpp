@@ -128,6 +128,7 @@ namespace Forgotten
 		livingroom->AddTransition(livingroomToHallway);
 		frontroom->AddTransition(frontroomToPlayroom);
 		frontroom->AddTransition(frontroomToLivingroom);
+		frontroom->AddTransition(victory);
 		playroom->AddTransition(playroomToKitchen);
 		playroom->AddTransition(playroomToHallway);
 		kitchen->AddTransition(kitchenToComputerroom);
@@ -158,20 +159,7 @@ namespace Forgotten
 
 		shared_ptr<Condition> leaveRoom = leaveCommands;
 
-		// looking around comments
-
-		shared_ptr<Condition> look = make_shared<CommandCondition>("look");
-		shared_ptr<Condition> discover = make_shared<CommandCondition>("discover");
-		shared_ptr<Condition> notice = make_shared<CommandCondition>("notice");
-		shared_ptr<Condition> search = make_shared<CommandCondition>("search");
-
-		// pick up
-		shared_ptr<Condition> find = make_shared<CommandCondition>("find");
-		shared_ptr<Condition> pickup = make_shared<CommandCondition>("pickup");
-
-		
 		// movement
-
 		shared_ptr<Condition> north = make_shared<CommandCondition>("north");
 		shared_ptr<Condition> south = make_shared<CommandCondition>("south");
 		shared_ptr<Condition> east = make_shared<CommandCondition>("east");
@@ -194,22 +182,40 @@ namespace Forgotten
 
 		shared_ptr<Condition> dictionary = make_shared<CommandCondition>("dictionary");
 
-		// win words
-
-		shared_ptr<Condition> win = make_shared<CommandCondition>("win");
-		shared_ptr<Condition> lose = make_shared<CommandCondition>("lose");
-		shared_ptr<Condition> finish = make_shared<CommandCondition>("finish");
-		shared_ptr<Condition> transcend = make_shared<CommandCondition>("transcend");
-		//shared_ptr<Condition> die = make_shared<MonsterCondition>("die");
-		//shared_ptr<Condition> quit = make_shared<MonsterCondition>("quit");
-		//shared_ptr<Condition> complete = make_shared<MonsterCondition>("complete");
-		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
-		shared_ptr<Condition> remember = make_shared<CommandCondition>("remember");
-
 		//need to implement + letter
 		shared_ptr<Condition> remove = make_shared<CommandCondition>("remove");
 		shared_ptr<Condition> kill = make_shared<CommandCondition>("kill");
 		shared_ptr<Condition> deleteWord = make_shared<CommandCondition>("delete");
+
+		// looking around comments
+
+		shared_ptr<Condition> look = make_shared<CommandCondition>("look");
+		shared_ptr<Condition> discover = make_shared<CommandCondition>("discover");
+		shared_ptr<Condition> notice = make_shared<CommandCondition>("notice");
+		shared_ptr<Condition> search = make_shared<CommandCondition>("search");
+
+		// pick up
+		shared_ptr<Condition> find = make_shared<CommandCondition>("find");
+		shared_ptr<Condition> pickup = make_shared<CommandCondition>("pickup");
+
+		// win words
+
+		shared_ptr<Condition> win = make_shared<CommandCondition>("win");
+		//shared_ptr<Condition> lose = make_shared<CommandCondition>("lose");
+		shared_ptr<Condition> finish = make_shared<CommandCondition>("finish");
+		//shared_ptr<Condition> transcend = make_shared<CommandCondition>("transcend");
+		shared_ptr<Condition> door = make_shared<CommandCondition>("door");
+		//shared_ptr<Condition> die = make_shared<MonsterCondition>("die");
+		//shared_ptr<Condition> quit = make_shared<MonsterCondition>("quit");
+		shared_ptr<Condition> complete = make_shared<MonsterCondition>("complete");
+		//Temp win con since I'm lazy. Probablt change this to passing in a set with the specific key words(?)
+		shared_ptr<Condition> remember = make_shared<CommandCondition>("remember");
+
+		shared_ptr<MultipleOrCondition> winWords = make_shared<MultipleOrCondition>();
+		winWords->AddCondition(win);
+		winWords->AddCondition(finish);
+		winWords->AddCondition(door);
+		winWords->AddCondition(complete);
 
 
 		bedroomLeaving->SetCondition(leaveRoom);
@@ -235,7 +241,7 @@ namespace Forgotten
 		hallwayToLivingroom->SetCondition(moveNorth);
 
 		guestroomToHallmay->SetCondition(moveNorth);
-		victory->SetCondition(win);
+		victory->SetCondition(remember);
 
 		livingroomToKitchen->SetCondition(moveNorth);
 		livingroomToBedroom->SetCondition(moveWest);
@@ -244,9 +250,10 @@ namespace Forgotten
 
 		//currently impossible.
 		//livingroomToComputerroom->SetCondition();
-
 		frontroomToLivingroom->SetCondition(moveWest);
 		frontroomToPlayroom->SetCondition(moveNorth);
+
+		victory->SetCondition(winWords);
 		
 		playroomToKitchen->SetCondition(moveWest);
 		//definitely not south, different condition (secret)
