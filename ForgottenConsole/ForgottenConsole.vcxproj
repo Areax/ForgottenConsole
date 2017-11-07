@@ -219,6 +219,7 @@
     <Text Include="Content\loser.txt" />
     <Text Include="Content\playroom.txt" />
     <Text Include="Content\victory.txt" />
+    <Text Include="remember.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
